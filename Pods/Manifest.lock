@@ -1,0 +1,20 @@
+PODS:
+  - CheckMarkView (0.4.3)
+  - RandomUtils (0.2.0)
+
+DEPENDENCIES:
+  - CheckMarkView
+  - RandomUtils
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CheckMarkView
+    - RandomUtils
+
+SPEC CHECKSUMS:
+  CheckMarkView: 8bcac176673ed40d05f220d335de92f6a2702404
+  RandomUtils: 46619b94f7f72743475308981bca450459600fb7
+
+PODFILE CHECKSUM: d9e4d3ea3aa783b7d03ad757d65e53c0ef4778f9
+
+COCOAPODS: 1.5.3
