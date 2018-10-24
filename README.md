@@ -1,3 +1,3 @@
 # Memento
 
-A description of this package.
+Memory recall app for ios 12 created in XCode
