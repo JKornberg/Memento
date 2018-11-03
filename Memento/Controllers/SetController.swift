@@ -10,11 +10,15 @@ import UIKit
 
 class SetController: UIViewController, UITableViewDelegate, UITableViewDataSource, CellDelegate {
 
+    @IBAction func addSet(_ sender: Any) {
+    }
     
-    var setMap = [String:CardSet]()
-    var setKeys = [String]()
-    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var sortButton: UIButton!
+    var setMap = [Int:CardSet]()
+    var setKeys = [Int]()
     @IBOutlet weak var SetTableView: UITableView!
+    @IBAction func sortSets(_ sender: Any) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -25,12 +29,13 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func fetchData(){
-        setMap = ["123":CardSet(setName: "test", setId: "123"),"345":CardSet(setName: "teset2", setId: "345")]
+        setMap = [1:CardSet(setName: "test", setId: 1),2:CardSet(setName: "teset2", setId: 2)]
         setKeys = Array(setMap.keys)
     }
     
-    func toggleSet(setID: String, val: Bool) {
+    func toggleSet(setID: Int, val: Bool) {
             setMap[setID]?.isActive = val
+            print("set \(setID) is \(val)")
         }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,7 +45,9 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let newCell = SetTableView.dequeueReusableCell(withIdentifier: "customSetCell", for: indexPath) as! SetCell
         newCell.delegate = self
+        newCell.setID = setMap[setKeys[indexPath.row]]!.setId
         newCell.title.text = setMap[setKeys[indexPath.row]]?.setName
+        newCell.checkView.checked = setMap[setKeys[indexPath.row]]!.isActive
         return newCell
     }
     

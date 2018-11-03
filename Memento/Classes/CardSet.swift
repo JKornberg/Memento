@@ -8,15 +8,19 @@
 
 import UIKit
 
-struct CardSet: Hashable{
+class CardSet: Hashable{
     static func == (lhs: CardSet, rhs: CardSet) -> Bool {
         return lhs.setId == rhs.setId
+    }
+    var hashValue: Int{
+        return setId
     }
     
     var setName = ""
     var isActive = false
-    var setId = ""
-    init(setName : String, setId : String){
+    var setId = 0
+    var cards = [Card]()
+    init(setName : String, setId : Int){
         self.setName = setName
         self.setId = setId
         self.isActive = false

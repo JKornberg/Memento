@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="customCardCell" rowHeight="200" id="SB6-Tp-QJx" customClass="CardCell" customModule="Memento" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="363" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SB6-Tp-QJx" id="1im-iK-Soq">
+                <rect key="frame" x="0.0" y="0.0" width="363" height="199.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HP7-iP-FXt" userLabel="CardView">
+                        <rect key="frame" x="36" y="20" width="291" height="160"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehX-Qc-Waw" userLabel="TopView">
+                                <rect key="frame" x="0.0" y="0.0" width="291" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPf-an-wGg">
+                                        <rect key="frame" x="20" y="26" width="70" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="xTG-S0-Sgl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OKI-br-d3m">
+                                        <rect key="frame" x="20" y="45" width="251" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="pEB-5u-cVr"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="OKI-br-d3m" firstAttribute="top" secondItem="HPf-an-wGg" secondAttribute="bottom" constant="5" id="0Gt-Mv-Y0o"/>
+                                    <constraint firstAttribute="bottom" secondItem="OKI-br-d3m" secondAttribute="bottom" constant="5" id="IE9-Sl-hn4"/>
+                                    <constraint firstItem="HPf-an-wGg" firstAttribute="leading" secondItem="ehX-Qc-Waw" secondAttribute="leading" constant="20" id="T3D-2A-vhM"/>
+                                    <constraint firstAttribute="trailing" secondItem="OKI-br-d3m" secondAttribute="trailing" constant="20" id="edU-Rw-jkv"/>
+                                    <constraint firstItem="OKI-br-d3m" firstAttribute="leading" secondItem="ehX-Qc-Waw" secondAttribute="leading" constant="20" id="sxq-ez-TPp"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZJ-es-YOH" userLabel="BottomView">
+                                <rect key="frame" x="0.0" y="80" width="291" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQJ-qr-OUf">
+                                        <rect key="frame" x="20" y="5" width="58" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="Hfd-VY-jn4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ISV-Gz-ktk">
+                                        <rect key="frame" x="20" y="24" width="251" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="xIz-Ji-v11"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ISV-Gz-ktk" secondAttribute="trailing" constant="20" id="C32-BA-lMe"/>
+                                    <constraint firstItem="ISV-Gz-ktk" firstAttribute="top" secondItem="lQJ-qr-OUf" secondAttribute="bottom" constant="5" id="M1J-nN-F2K"/>
+                                    <constraint firstItem="ISV-Gz-ktk" firstAttribute="leading" secondItem="ZZJ-es-YOH" secondAttribute="leading" constant="20" id="M3p-KZ-c02"/>
+                                    <constraint firstItem="lQJ-qr-OUf" firstAttribute="leading" secondItem="ZZJ-es-YOH" secondAttribute="leading" constant="20" id="Nb8-Vv-L6U"/>
+                                    <constraint firstItem="lQJ-qr-OUf" firstAttribute="top" secondItem="ZZJ-es-YOH" secondAttribute="top" constant="5" id="gjf-Hl-eOn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZZJ-es-YOH" firstAttribute="height" secondItem="ehX-Qc-Waw" secondAttribute="height" id="010-dR-6qC"/>
+                            <constraint firstAttribute="trailing" secondItem="ZZJ-es-YOH" secondAttribute="trailing" id="Rgj-xA-ryG"/>
+                            <constraint firstItem="ZZJ-es-YOH" firstAttribute="top" secondItem="ehX-Qc-Waw" secondAttribute="bottom" id="WCd-u7-vad"/>
+                            <constraint firstAttribute="trailing" secondItem="ehX-Qc-Waw" secondAttribute="trailing" id="YHq-86-ols"/>
+                            <constraint firstItem="ehX-Qc-Waw" firstAttribute="leading" secondItem="HP7-iP-FXt" secondAttribute="leading" id="YpU-yC-iK7"/>
+                            <constraint firstAttribute="bottom" secondItem="ZZJ-es-YOH" secondAttribute="bottom" id="dCZ-Qe-DUl"/>
+                            <constraint firstItem="ehX-Qc-Waw" firstAttribute="top" secondItem="HP7-iP-FXt" secondAttribute="top" id="eEX-Yj-E0B"/>
+                            <constraint firstItem="ZZJ-es-YOH" firstAttribute="leading" secondItem="HP7-iP-FXt" secondAttribute="leading" id="kqi-pN-l1A"/>
+                            <constraint firstAttribute="height" constant="160" id="pLb-T2-tWZ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="HP7-iP-FXt" firstAttribute="centerY" secondItem="1im-iK-Soq" secondAttribute="centerY" id="1hC-aL-6qX"/>
+                    <constraint firstItem="HP7-iP-FXt" firstAttribute="leading" secondItem="1im-iK-Soq" secondAttribute="leadingMargin" constant="20" id="RS9-2K-0yO"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="HP7-iP-FXt" secondAttribute="trailing" constant="20" id="cau-qX-l4i"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="wzZ-xt-Ehv"/>
+            <connections>
+                <outlet property="cardView" destination="HP7-iP-FXt" id="Xeg-f3-RLy"/>
+                <outlet property="side1" destination="OKI-br-d3m" id="NlB-Cd-W5p"/>
+                <outlet property="side2" destination="ISV-Gz-ktk" id="bgG-hh-AbQ"/>
+            </connections>
+            <point key="canvasLocation" x="104.8" y="179.91004497751126"/>
+        </tableViewCell>
+    </objects>
+</document>

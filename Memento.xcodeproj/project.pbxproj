@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3EAECEBC682B4D718FACF849 /* Pods_Memento.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8307A466ED0EE1FCCE500F /* Pods_Memento.framework */; };
 		463391A9217D0DD2001B8319 /* CardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463391A8217D0DD2001B8319 /* CardSet.swift */; };
+		4642B92421821CA00039732D /* CardsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4642B92321821CA00039732D /* CardsController.swift */; };
+		4642B92921821D6D0039732D /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4642B92821821D6D0039732D /* Card.swift */; };
+		46552982218BC14000DF1973 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46552980218BC14000DF1973 /* CardCell.swift */; };
+		46552983218BC14000DF1973 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46552981218BC14000DF1973 /* CardCell.xib */; };
 		469E7A32217B7F19009E9D7D /* SetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469E7A31217B7F19009E9D7D /* SetController.swift */; };
 		46B92529217D049B0046E228 /* SetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B92527217D049B0046E228 /* SetCell.swift */; };
 		46B9252A217D049B0046E228 /* SetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46B92528217D049B0046E228 /* SetCell.xib */; };
@@ -22,6 +26,10 @@
 /* Begin PBXFileReference section */
 		1F8307A466ED0EE1FCCE500F /* Pods_Memento.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memento.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		463391A8217D0DD2001B8319 /* CardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSet.swift; sourceTree = "<group>"; };
+		4642B92321821CA00039732D /* CardsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsController.swift; sourceTree = "<group>"; };
+		4642B92821821D6D0039732D /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		46552980218BC14000DF1973 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		46552981218BC14000DF1973 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		469E7A31217B7F19009E9D7D /* SetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetController.swift; sourceTree = "<group>"; };
 		46B92527217D049B0046E228 /* SetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCell.swift; sourceTree = "<group>"; };
 		46B92528217D049B0046E228 /* SetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetCell.xib; sourceTree = "<group>"; };
@@ -48,12 +56,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4642B91E218211210039732D /* CardCell */ = {
+			isa = PBXGroup;
+			children = (
+				46552980218BC14000DF1973 /* CardCell.swift */,
+				46552981218BC14000DF1973 /* CardCell.xib */,
+			);
+			path = CardCell;
+			sourceTree = "<group>";
+		};
+		4642B92721821D5A0039732D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				463391A8217D0DD2001B8319 /* CardSet.swift */,
+				4642B92821821D6D0039732D /* Card.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		469E7A30217B7EA0009E9D7D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				46DC3D04217A5698000D22C4 /* HomeController.swift */,
 				469E7A31217B7F19009E9D7D /* SetController.swift */,
-				463391A8217D0DD2001B8319 /* CardSet.swift */,
+				4642B92321821CA00039732D /* CardsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -88,6 +114,8 @@
 		46DC3D01217A5698000D22C4 /* Memento */ = {
 			isa = PBXGroup;
 			children = (
+				4642B91E218211210039732D /* CardCell */,
+				4642B92721821D5A0039732D /* Classes */,
 				46B9252B217D06AB0046E228 /* SetCell */,
 				469E7A30217B7EA0009E9D7D /* Controllers */,
 				46DC3D02217A5698000D22C4 /* AppDelegate.swift */,
@@ -178,6 +206,7 @@
 			files = (
 				46B9252A217D049B0046E228 /* SetCell.xib in Resources */,
 				46DC3D0D217A5699000D22C4 /* LaunchScreen.storyboard in Resources */,
+				46552983218BC14000DF1973 /* CardCell.xib in Resources */,
 				46DC3D0A217A5699000D22C4 /* Assets.xcassets in Resources */,
 				46DC3D08217A5698000D22C4 /* Main.storyboard in Resources */,
 			);
@@ -239,11 +268,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4642B92421821CA00039732D /* CardsController.swift in Sources */,
 				46B92529217D049B0046E228 /* SetCell.swift in Sources */,
 				463391A9217D0DD2001B8319 /* CardSet.swift in Sources */,
+				4642B92921821D6D0039732D /* Card.swift in Sources */,
 				46DC3D05217A5698000D22C4 /* HomeController.swift in Sources */,
 				46DC3D03217A5698000D22C4 /* AppDelegate.swift in Sources */,
 				469E7A32217B7F19009E9D7D /* SetController.swift in Sources */,
+				46552982218BC14000DF1973 /* CardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

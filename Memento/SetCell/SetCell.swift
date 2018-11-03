@@ -10,7 +10,7 @@ import UIKit
 import CheckMarkView
 
 protocol CellDelegate{
-    func toggleSet(setID: String, val: Bool)
+    func toggleSet(setID: Int, val: Bool)
 }
 
 class SetCell: UITableViewCell {
@@ -19,7 +19,7 @@ class SetCell: UITableViewCell {
     @IBOutlet weak var CellSuperView: UIView!
     @IBOutlet weak var title: UILabel!
     var delegate : CellDelegate? = nil
-    var setID : String = ""
+    var setID : Int = 0
     var setName : String = ""
     
     override func awakeFromNib() {
