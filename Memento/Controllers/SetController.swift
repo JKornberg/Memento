@@ -32,6 +32,7 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         SetTableView.register(UINib(nibName: "SetCell", bundle: nil), forCellReuseIdentifier: "customSetCell")
     }
     
+    //TOPIC- Delegate Functions
     func createAndSaveCards(title: String, cards: [Card]) {
         let newCardSet = CardSet(setName: title, cards: cards)
         print(title)
@@ -44,41 +45,11 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         setMap[setId!].cards = cards
         saveSets()
     }
-    
-    
-    func saveSets(){
-        let encoder = PropertyListEncoder()
-        do {
-            let data = try encoder.encode(self.setMap)
-            try data.write(to: self.dataFilePath! )
-            print("saving")
-            
-        }
-        catch{
-            print("error encoding")
-        }
-    }
-    
-
-    
-    func fetchData(){
-        if let data = try? Data(contentsOf: dataFilePath!){
-            let decoder = PropertyListDecoder()
-            do{
-                setMap = try decoder.decode([CardSet].self, from: data)
-            }
-            catch{
-                print("Error loading data: \(error)")
-            }
-        }
-        
-    }
-    
     func toggleSet(setID: Int, val: Bool) {
-            setMap[setID].isActive = val
-            print("set \(setID) is \(val)")
-            saveSets()
-        }
+        setMap[setID].isActive = val
+        print("set \(setID) is \(val)")
+        saveSets()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return setMap.count
@@ -96,6 +67,33 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCardSet = indexPath.row
         performSegue(withIdentifier: "OpenCardsSet", sender: self)
+    }
+    
+    
+    //TOPIC: Manage Data
+    func saveSets(){
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(self.setMap)
+            try data.write(to: self.dataFilePath! )
+            print("saving")
+            
+        }
+        catch{
+            print("error encoding")
+        }
+    }
+    
+    func fetchData(){
+        if let data = try? Data(contentsOf: dataFilePath!){
+            let decoder = PropertyListDecoder()
+            do{
+                setMap = try decoder.decode([CardSet].self, from: data)
+            }
+            catch{
+                print("Error loading data: \(error)")
+            }
+        }
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {

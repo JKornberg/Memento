@@ -16,7 +16,7 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     var cards : [Card] = [Card]()
     var setName : String?
     var setId : Int?
-
+    var saveAction : UIAlertAction!
     @IBOutlet weak var tableView: UITableView!
     var delegate : CardsControllerDelegate?
     override func viewDidLoad() {
@@ -56,11 +56,12 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         tableView.rowHeight = 200
     }
     @IBAction func addCard(_ barItem: UIBarButtonItem){
+        refreshArray()
         cards.append(Card(side1: "", side2: "", cardId: cards.count))
         tableView.reloadData()
     }
     
-    @IBAction func donePressed(_ barItem: UIBarButtonItem)
+    func refreshArray()
     {
         for (index, card) in cards.enumerated(){
             let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! CardCell
@@ -71,42 +72,57 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
                 card.side2 = text
             }
         }
+    }
+    
+    @IBAction func donePressed(_ barItem: UIBarButtonItem)
+    {
+        refreshArray()
         if setId != -1{
             self.delegate?.saveCards(cards: self.cards, setId: setId)
             self.navigationController?.popViewController(animated: true)
         }
         else{
             var textField = UITextField()
+            textField.delegate = self
             let alert  = UIAlertController(title: "Would you like to save this set of cards?", message: "", preferredStyle: .alert)
             alert.addTextField { (alertTextField) in
                 alertTextField.placeholder = "Enter set name"
                 textField = alertTextField
+                textField.delegate = self
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (UIAlertAction) in
                 self.navigationController?.popViewController(animated: true)
             }
-            let saveAction = UIAlertAction(title: "Save", style: .default) { (UIAlertAction) in
-                if textField.text == nil{
-                    textField.layer.borderColor = UIColor.red.cgColor}
-                    
-                else{
-                    self.delegate?.createAndSaveCards(title: textField.text!, cards: self.cards)
-                    self.navigationController?.popViewController(animated: true)
-                }
-
+            
+            //Set up Save Button and add to alert
+            saveAction = UIAlertAction(title: "Save", style: .default) { (UIAlertAction) in
+               // textField.layer.borderColor = UIColor.red.cgColor
+                self.delegate?.createAndSaveCards(title: textField.text!, cards: self.cards)
+                self.navigationController?.popViewController(animated: true)
             }
+            saveAction.isEnabled = false
             alert.addAction(cancelAction)
             alert.addAction(saveAction)
 
             present(alert, animated: true, completion: nil)
         }
-        
+    }
+    // Textfield delegate method for observing the text change
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+        // if text length is greater than 0 enables the button, else disables it
+        let existingText = textField.text as NSString?
+        if let replacedText = existingText?.replacingCharacters(in: range, with: string), replacedText.count > 0 {
+            saveAction.isEnabled = true
+            print("Enabled")
+        }
+        else{
+            saveAction.isEnabled = false
+        }
+        return true
     }
     
-    func saveSet(){
-
-    }
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -123,9 +139,7 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         cell.side2.text = cards[indexPath.row].side2
         createShadow(cell: cell)
         cell.selectionStyle = .none
-        cell.side1.delegate = self
-        cell.side2.delegate = self
-      //  cell.side1.delegate=self
+        //cell.side1.delegate=self
         //cell.side2.delegate=self
         // Configure the cell...
         return cell
