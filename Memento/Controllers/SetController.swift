@@ -8,51 +8,115 @@
 
 import UIKit
 
-class SetController: UIViewController, UITableViewDelegate, UITableViewDataSource, CellDelegate {
+class SetController: UIViewController, UITableViewDelegate, UITableViewDataSource, CellDelegate, CardsControllerDelegate {
 
-    @IBAction func addSet(_ sender: Any) {
-    }
     
+
     @IBOutlet weak var sortButton: UIButton!
-    var setMap = [Int:CardSet]()
-    var setKeys = [Int]()
+    var setMap : [CardSet] = [CardSet]()
+    var selectedCardSet : Int = -1
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("CardSets.plist")
+    
     @IBOutlet weak var SetTableView: UITableView!
+    
     @IBAction func sortSets(_ sender: Any) {
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print(dataFilePath)
+        fetchData()
         SetTableView.delegate = self
         SetTableView.dataSource = self
-        fetchData()
         SetTableView.register(UINib(nibName: "SetCell", bundle: nil), forCellReuseIdentifier: "customSetCell")
     }
     
+    func createAndSaveCards(title: String, cards: [Card]) {
+        let newCardSet = CardSet(setName: title, cards: cards)
+        print(title)
+        setMap.append(newCardSet)
+        SetTableView.reloadData()
+        saveSets()
+    }
+    
+    func saveCards(cards: [Card], setId: Int?){
+        setMap[setId!].cards = cards
+        saveSets()
+    }
+    
+    
+    func saveSets(){
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(self.setMap)
+            try data.write(to: self.dataFilePath! )
+            print("saving")
+            
+        }
+        catch{
+            print("error encoding")
+        }
+    }
+    
+
+    
     func fetchData(){
-        setMap = [1:CardSet(setName: "test", setId: 1),2:CardSet(setName: "teset2", setId: 2)]
-        setKeys = Array(setMap.keys)
+        if let data = try? Data(contentsOf: dataFilePath!){
+            let decoder = PropertyListDecoder()
+            do{
+                setMap = try decoder.decode([CardSet].self, from: data)
+            }
+            catch{
+                print("Error loading data: \(error)")
+            }
+        }
+        
     }
     
     func toggleSet(setID: Int, val: Bool) {
-            setMap[setID]?.isActive = val
+            setMap[setID].isActive = val
             print("set \(setID) is \(val)")
+            saveSets()
         }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return setKeys.count
+        return setMap.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let newCell = SetTableView.dequeueReusableCell(withIdentifier: "customSetCell", for: indexPath) as! SetCell
         newCell.delegate = self
-        newCell.setID = setMap[setKeys[indexPath.row]]!.setId
-        newCell.title.text = setMap[setKeys[indexPath.row]]?.setName
-        newCell.checkView.checked = setMap[setKeys[indexPath.row]]!.isActive
+        newCell.setID = indexPath.row
+        newCell.title.text = setMap[indexPath.row].setName
+        newCell.checkView.checked = setMap[indexPath.row].isActive
         return newCell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected \(indexPath)")
+        selectedCardSet = indexPath.row
+        performSegue(withIdentifier: "OpenCardsSet", sender: self)
+    }
+    
+    @IBAction func addButtonPressed(_ sender: Any) {
+        selectedCardSet = -1
+        performSegue(withIdentifier: "OpenCardsSet", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "OpenCardsSet"{
+            let dest = segue.destination as! CardsController
+            dest.delegate = self
+            if selectedCardSet != -1{
+                dest.cards = setMap[selectedCardSet].cards
+            }
+            else {
+                dest.cards = [Card(side1: "", side2: "", cardId: 0)]
+            }
+            dest.setId = selectedCardSet
+
+            
+        }
     }
     
     /*

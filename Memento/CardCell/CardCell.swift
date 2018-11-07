@@ -27,19 +27,16 @@ class CardCell: UITableViewCell {
     @IBOutlet var side2: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.layoutIfNeeded()
         // Initialization code
         
+    }
+    override func layoutSubviews() {
         side1.setBottomBorder()
         side2.setBottomBorder()
-        
     }
     
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
     
     
 }

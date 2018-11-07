@@ -7,19 +7,26 @@
 //
 
 import UIKit
+protocol CardsControllerDelegate{
+    func createAndSaveCards(title: String, cards: [Card])
+    func saveCards(cards: [Card], setId: Int?)
+}
 
-class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate  {
-    var cards = [Card]()
-    var cardKeys = [Int]()
+class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate  {
+    var cards : [Card] = [Card]()
+    var setName : String?
+    var setId : Int?
+
     @IBOutlet weak var tableView: UITableView!
-    
+    var delegate : CardsControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        cards.append(Card(side1: "", side2: "", cardId: 0))
         tableView.register(UINib(nibName: "CardCell", bundle: nil), forCellReuseIdentifier: "customCardCell")
         initToolbar()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.donePressed(_:)))
+        self.navigationItem.rightBarButtonItem = doneButton
         configureTableView()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -53,52 +60,90 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         tableView.reloadData()
     }
     
-    // MARK: - Table view data source
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+    @IBAction func donePressed(_ barItem: UIBarButtonItem)
+    {
+        for (index, card) in cards.enumerated(){
+            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! CardCell
+            if let text = cell.side1.text {
+                card.side1 = text
+            }
+            if let text = cell.side2.text {
+                card.side2 = text
+            }
+        }
+        if setId != -1{
+            self.delegate?.saveCards(cards: self.cards, setId: setId)
+            self.navigationController?.popViewController(animated: true)
+        }
+        else{
+            var textField = UITextField()
+            let alert  = UIAlertController(title: "Would you like to save this set of cards?", message: "", preferredStyle: .alert)
+            alert.addTextField { (alertTextField) in
+                alertTextField.placeholder = "Enter set name"
+                textField = alertTextField
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (UIAlertAction) in
+                self.navigationController?.popViewController(animated: true)
+            }
+            let saveAction = UIAlertAction(title: "Save", style: .default) { (UIAlertAction) in
+                if textField.text == nil{
+                    textField.layer.borderColor = UIColor.red.cgColor}
+                    
+                else{
+                    self.delegate?.createAndSaveCards(title: textField.text!, cards: self.cards)
+                    self.navigationController?.popViewController(animated: true)
+                }
+
+            }
+            alert.addAction(cancelAction)
+            alert.addAction(saveAction)
+
+            present(alert, animated: true, completion: nil)
+        }
+        
     }
+    
+    func saveSet(){
+
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return cards.count
+    return cards.count
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCardCell", for: indexPath) as! CardCell
-        createShadow(cardView: cell.cardView)
+        cell.side1.text = cards[indexPath.row].side1
+        cell.side2.text = cards[indexPath.row].side2
+        createShadow(cell: cell)
+        cell.selectionStyle = .none
+        cell.side1.delegate = self
+        cell.side2.delegate = self
       //  cell.side1.delegate=self
         //cell.side2.delegate=self
         // Configure the cell...
         return cell
     }
     
-    func createShadow(cardView: UIView){
-        cardView.layer.shadowColor = UIColor.black.cgColor
-        cardView.layer.shadowOpacity = 0.6
-        let shadowPath = CGPath(rect: CGRect(x: 10,
-                                             y:  8,
-                                             width: cardView.layer.bounds.width,
-                                             height: cardView.layer.bounds.height), transform: nil)
+    func createShadow(cell: CardCell){
+        cell.cardView.layer.shadowColor = UIColor.black.cgColor
+        cell.cardView.layer.shadowOpacity = 0.6
+        let shadowPath = CGPath(rect: CGRect(x: 0,
+                                             y:  5,
+                                             width: cell.cardView.bounds.width,
+                                             height: cell.cardView.layer.bounds.height), transform: nil)
         
-        cardView.layer.shadowPath = shadowPath
-        print(cardView.layer.bounds.width)
+        cell.cardView.layer.shadowPath = shadowPath
+        print(cell.layer.bounds.width-40)
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        let size = CGSize(width: view.frame.width, height: .infinity)
-        let estimatedSize = textView.sizeThatFits(size)
-        textView.constraints.forEach{
-            (constraint) in
-            if constraint.firstAttribute == .height{
-                constraint.constant = estimatedSize.height
-            }
-        }
-        configureTableView()
-    }
+
 
     
     /*

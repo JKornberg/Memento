@@ -114,9 +114,9 @@
 		46DC3D01217A5698000D22C4 /* Memento */ = {
 			isa = PBXGroup;
 			children = (
+				46B9252B217D06AB0046E228 /* SetCell */,
 				4642B91E218211210039732D /* CardCell */,
 				4642B92721821D5A0039732D /* Classes */,
-				46B9252B217D06AB0046E228 /* SetCell */,
 				469E7A30217B7EA0009E9D7D /* Controllers */,
 				46DC3D02217A5698000D22C4 /* AppDelegate.swift */,
 				46DC3D06217A5698000D22C4 /* Main.storyboard */,

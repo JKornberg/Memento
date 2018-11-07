@@ -20,7 +20,6 @@ class HomeController: UIViewController {
     
     @IBAction func tapPiece(_ gestureRecognizer : UITapGestureRecognizer ) {
         guard gestureRecognizer.view != nil else { return }
-        print("tap")
         if gestureRecognizer.state == .ended {      // Move the view down and to the right when tapped.
             performSegue(withIdentifier: "toSetView", sender: self)
         }}

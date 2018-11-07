@@ -14,17 +14,15 @@ protocol CellDelegate{
 }
 
 class SetCell: UITableViewCell {
-    
     @IBOutlet weak var checkView: CheckMarkView!
     @IBOutlet weak var CellSuperView: UIView!
     @IBOutlet weak var title: UILabel!
     var delegate : CellDelegate? = nil
-    var setID : Int = 0
+    var setID = Int()
     var setName : String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("here")
         // Initialization code goes here
         checkView.style = .openCircle
         checkView.setNeedsDisplay()

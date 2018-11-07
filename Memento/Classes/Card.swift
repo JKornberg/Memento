@@ -6,7 +6,7 @@
 //  Copyright © 2018 Jonah Kornberg. All rights reserved.
 //
 import UIKit
-class Card:Hashable{
+class Card:Codable{
 
     var hashValue: Int{
         return cardId
