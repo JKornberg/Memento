@@ -8,4 +8,6 @@ target 'Memento' do
   # Pods for Memento
     pod 'CheckMarkView'
     pod 'RandomUtils'
+    pod 'SwipeCellKit'
+
 end

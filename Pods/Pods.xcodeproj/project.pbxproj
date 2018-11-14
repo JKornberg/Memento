@@ -7,29 +7,61 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		083687D7DE452AA84A2DD780D73AED43 /* CheckMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F9F11590AA860EFDE75D0B3C3BAEA4 /* CheckMarkView.swift */; };
-		0D77DA96B7A796393271F5C9B5927785 /* RandomUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 270C769326091F18DD2D37091ABA235A /* RandomUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2DAA0B1F293B1CE2C71BC493FA38F4AE /* RandomUtils-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 595EDEEAAFEBA0E8590E70E61610E1BF /* RandomUtils-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EF11A6EC7A765053ED4BF066BBB86BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		41ACAB98A2E1FAAF9A66E22F945F8727 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		5706B9695DB255813F90CA1BC90638C4 /* Pods-Memento-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D00DAEC53A15342DBB821B2288964BEA /* Pods-Memento-dummy.m */; };
-		5B9862E5EC94E60F3B0B113ACB90D8C0 /* CheckMarkView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 336A14157064E4554A90FE79324D9A6E /* CheckMarkView-dummy.m */; };
-		9660B07AC8EEF427FDCE79F2F72E30A1 /* Pods-Memento-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F581EB5A94002D4C389AA247FBD8163D /* Pods-Memento-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		99869C82DD726A141A27FBFF92006E4D /* CheckMarkView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 57ACD036A792B0FE1D241C33D0E5BF64 /* CheckMarkView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		083687D7DE452AA84A2DD780D73AED43 /* CheckMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943DC22ABBB4FB0CB5B324A008EBC4F2 /* CheckMarkView.swift */; };
+		10E97EFA4068794EBCE0673BBF94DE5B /* SwipeExpanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD34710BB04891A868EF3E9C87731AA7 /* SwipeExpanding.swift */; };
+		18B5AABD10905834E102BE99A4E9AD4B /* SwipeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D324B8A1908DACCF68335CF7A6F63B9 /* SwipeAnimator.swift */; };
+		29A8D9A81C9E31FC5F9B3AB381833428 /* Pods-Memento-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F581EB5A94002D4C389AA247FBD8163D /* Pods-Memento-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E4BFBDDB442C3C578EE7D63A5AE2CBF /* SwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E48ABDD4B810B526180E520D823345 /* SwipeAction.swift */; };
+		2F80FED979F6E73A098E8C51CC7B60CC /* SwipeFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A583ECB3086DF1EE735C1EB735793D0 /* SwipeFeedback.swift */; };
+		37C16AA544DDEF54351309EF69EB8562 /* SwipeCollectionViewCell+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0579E4C41FD5C56FA4EE441A48E267 /* SwipeCollectionViewCell+Accessibility.swift */; };
+		37D0993873D7E0259847B939C5CB8B2D /* SwipeActionTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B046776237AB1BC4B451083587AAE5 /* SwipeActionTransitioning.swift */; };
+		39E6555B80505EB585C301BF98ED058F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65951386B770CE8A1E1D306462DDB03 /* Extensions.swift */; };
+		3E1E1F3C6678FEC27FFE383F46645EC0 /* SwipeCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC709BC8FA205B066D0B421BB9D2EBD3 /* SwipeCollectionViewCellDelegate.swift */; };
+		3E3D7A01CCF767B05E1B303390B6B5DA /* SwipeCellKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A84E4A3B7B11DDEEE128CB9A95A6CC1 /* SwipeCellKit-dummy.m */; };
+		4383559C7CFBFFCA6B0E5B63AFC1624D /* Swipeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE8C85B73EB8582C050A4A53A67B258 /* Swipeable.swift */; };
+		4AF1A9FB450A9C1CDD3DE6832B942CD4 /* SwipeActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2638432663D4508BF9ECAA6925DB75B4 /* SwipeActionsView.swift */; };
+		5B83121B44D7565DF79E7015187EBA17 /* RandomUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 74E0029896DB2562FC4055B64C370188 /* RandomUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B9862E5EC94E60F3B0B113ACB90D8C0 /* CheckMarkView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6447F4BD8530A8E172CA9D4A1306EE6A /* CheckMarkView-dummy.m */; };
+		5E50C953877DF484F38C80707F986D0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		6E3823683BE582413E5E9CE153E9A8C2 /* SwipeCollectionViewCell+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = A289952EE32080CDBDA1C949634890EA /* SwipeCollectionViewCell+Display.swift */; };
+		7965159F4A4D7AF8B7CB6460EE358DC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		876A1FE5F1A05842259D584DF3B23EB1 /* SwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C01A6ECC8E664B97407949B33A227F6 /* SwipeController.swift */; };
+		89AF35635E606A83B5E14F5D488C28A8 /* SwipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6005117639F2D645E34F9FEC841B07A /* SwipeCollectionViewCell.swift */; };
+		8C5BB5937AB58D7AB24F861374B2892B /* SwipeTableViewCell+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807AF7822B12F8DC16831130DD54CC94 /* SwipeTableViewCell+Display.swift */; };
+		8FA1A94E989BF9AD1845064ECA2A8358 /* Pods-Memento-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D00DAEC53A15342DBB821B2288964BEA /* Pods-Memento-dummy.m */; };
+		9318D5099859514F09FF42EC82F75295 /* SwipeCellKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 810EED5AB63E66222D4C0040B44E0330 /* SwipeCellKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		97AB7D9701781D51F87882C5372B3DCD /* SwipeTableViewCell+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D518E7A4551431A7C0737D7F63AB5 /* SwipeTableViewCell+Accessibility.swift */; };
+		99869C82DD726A141A27FBFF92006E4D /* CheckMarkView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 972ACBBFDA23ECCCABB5D89C49429E79 /* CheckMarkView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A87C053F65265F3BA09683E78EC02D9 /* SwipeExpansionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76081C6525045F00726E912ADFE61143 /* SwipeExpansionStyle.swift */; };
+		9CD2609A70242FB6AC9B9EA9385E1B88 /* SwipeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B26AE5388F7B514F8A4D509710DB1 /* SwipeOptions.swift */; };
+		9D90FE06C095135C154F8FAA5E8A03B0 /* SwipeActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FAC36774715DB52F0A3FF8F9D77C71 /* SwipeActionButton.swift */; };
+		B644116DC398BE3647AB2397815992F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		C1EC2AE95693FDF4089207FD7FDF79F7 /* RandomUtils-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A46846CA8AAE4C1A4760EBD7ED5197 /* RandomUtils-dummy.m */; };
 		C43D36F69804503A2DACC006DDB705C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		E112CB8BEAC2457D338BE8EBC7482A71 /* RandomUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B122C829C555AF8FAE170584BA4EBBA /* RandomUtils.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		F7FA408357ED9064C5E507215213BA38 /* RandomUtils-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D762AC6DEDDF876B5383CBC8D068CD /* RandomUtils-dummy.m */; };
+		C900F808BD9ACD034919FBD19D6C298E /* SwipeAccessibilityCustomAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F844E57B860E1673F885B6C26D364 /* SwipeAccessibilityCustomAction.swift */; };
+		D765D61110A012A02668709E1EB5A3EA /* SwipeTransitionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7E32A342F8FD03E06331A67A76E43A /* SwipeTransitionLayout.swift */; };
+		D8A1FC8A5F9233C039023E669FBB369C /* SwipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB81AB02273DE71DF06E06F26467824 /* SwipeTableViewCell.swift */; };
+		EE0B76BB2525C291781EF324A7AA761E /* RandomUtils-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E4FBDE6FD0B780AE6973FD2D957EBB6 /* RandomUtils-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F010CE4C3DE91726FBC349A4A19B2478 /* SwipeTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB998AB34F961741084A423AA8612106 /* SwipeTableViewCellDelegate.swift */; };
+		F86E487FC8FE5DA33EB7E6F7B28A0769 /* RandomUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D94378298F1CC836E06F8392ED0298E3 /* RandomUtils.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		249588FFE08E10A6D21D66989181F015 /* PBXContainerItemProxy */ = {
+		2D3059E2D15ED80659C82168D236A92E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 566A4FC81D3D91C5D974F225D100BB9C;
+			remoteGlobalIDString = 12D963047144B0378776F1B7A1962589;
 			remoteInfo = RandomUtils;
 		};
-		40AF640A02B28FA5987AD1FAD91723AE /* PBXContainerItemProxy */ = {
+		8518A4059D1E093C1643AD259E4BE21A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6AFDB859FDCC7F48883C5E518A6D0F38;
+			remoteInfo = SwipeCellKit;
+		};
+		B55A8A8FA7C1D7FBF348BB8872E52523 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -39,52 +71,81 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0926C778BB72AAA37F27C15D3E11EDF6 /* RandomUtils.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RandomUtils.xcconfig; sourceTree = "<group>"; };
+		0C01A6ECC8E664B97407949B33A227F6 /* SwipeController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeController.swift; path = Source/SwipeController.swift; sourceTree = "<group>"; };
 		0DFB625B33A47F77B8CA9BA045865CCE /* Pods-Memento.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Memento.debug.xcconfig"; sourceTree = "<group>"; };
+		10E4D24FBDBFD98F6FD604C17C2ACCF4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10FE119E363E24A42D83EB60B87CFBE6 /* Pods-Memento-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Memento-resources.sh"; sourceTree = "<group>"; };
-		25F9F11590AA860EFDE75D0B3C3BAEA4 /* CheckMarkView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CheckMarkView.swift; path = CheckMarkView/Sources/CheckMarkView.swift; sourceTree = "<group>"; };
-		270C769326091F18DD2D37091ABA235A /* RandomUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RandomUtils.h; path = RandomUtils/RandomUtils.h; sourceTree = "<group>"; };
-		336A14157064E4554A90FE79324D9A6E /* CheckMarkView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CheckMarkView-dummy.m"; sourceTree = "<group>"; };
-		4F7862005F2E9D120803C3D16E3D5CED /* CheckMarkView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CheckMarkView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		57ACD036A792B0FE1D241C33D0E5BF64 /* CheckMarkView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CheckMarkView-umbrella.h"; sourceTree = "<group>"; };
-		595EDEEAAFEBA0E8590E70E61610E1BF /* RandomUtils-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RandomUtils-umbrella.h"; sourceTree = "<group>"; };
+		1A8BAB98A91080B44D1B82B41785070E /* SwipeCellKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeCellKit-prefix.pch"; sourceTree = "<group>"; };
+		2638432663D4508BF9ECAA6925DB75B4 /* SwipeActionsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeActionsView.swift; path = Source/SwipeActionsView.swift; sourceTree = "<group>"; };
+		2D324B8A1908DACCF68335CF7A6F63B9 /* SwipeAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeAnimator.swift; path = Source/SwipeAnimator.swift; sourceTree = "<group>"; };
+		3B7E32A342F8FD03E06331A67A76E43A /* SwipeTransitionLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeTransitionLayout.swift; path = Source/SwipeTransitionLayout.swift; sourceTree = "<group>"; };
+		47A46846CA8AAE4C1A4760EBD7ED5197 /* RandomUtils-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RandomUtils-dummy.m"; sourceTree = "<group>"; };
+		4F066D36E962A020BB195E9204F1A913 /* RandomUtils-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RandomUtils-prefix.pch"; sourceTree = "<group>"; };
+		4FACFF27DF292FC86FE857D00FA84536 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51607612145E0D1B6F47F35B21E6293B /* CheckMarkView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CheckMarkView.xcconfig; sourceTree = "<group>"; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		5E00A20A19648D67F41689EBE34C6D75 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		64D762AC6DEDDF876B5383CBC8D068CD /* RandomUtils-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RandomUtils-dummy.m"; sourceTree = "<group>"; };
-		665F6327F391BEEA235F97D130B4C0E1 /* RandomUtils.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RandomUtils.xcconfig; sourceTree = "<group>"; };
+		5A583ECB3086DF1EE735C1EB735793D0 /* SwipeFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeFeedback.swift; path = Source/SwipeFeedback.swift; sourceTree = "<group>"; };
+		5A84E4A3B7B11DDEEE128CB9A95A6CC1 /* SwipeCellKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwipeCellKit-dummy.m"; sourceTree = "<group>"; };
+		5E4FBDE6FD0B780AE6973FD2D957EBB6 /* RandomUtils-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RandomUtils-umbrella.h"; sourceTree = "<group>"; };
+		6447F4BD8530A8E172CA9D4A1306EE6A /* CheckMarkView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CheckMarkView-dummy.m"; sourceTree = "<group>"; };
 		6ACB1E8FBCA5C1E3D407F95C4B772DDA /* Pods-Memento.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Memento.release.xcconfig"; sourceTree = "<group>"; };
-		8343C0BCC2CD8A5209A082ACFB995899 /* RandomUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RandomUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BE44D4E0B2111138955747206C682B2 /* RandomUtils-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RandomUtils-prefix.pch"; sourceTree = "<group>"; };
+		6C0579E4C41FD5C56FA4EE441A48E267 /* SwipeCollectionViewCell+Accessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwipeCollectionViewCell+Accessibility.swift"; path = "Source/SwipeCollectionViewCell+Accessibility.swift"; sourceTree = "<group>"; };
+		6E6D39C89A73C478F51B1CEC3C389EAB /* RandomUtils.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RandomUtils.modulemap; sourceTree = "<group>"; };
+		74E0029896DB2562FC4055B64C370188 /* RandomUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RandomUtils.h; path = RandomUtils/RandomUtils.h; sourceTree = "<group>"; };
+		76081C6525045F00726E912ADFE61143 /* SwipeExpansionStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeExpansionStyle.swift; path = Source/SwipeExpansionStyle.swift; sourceTree = "<group>"; };
+		7677649E160F2BFE38B956734ACAB829 /* CheckMarkView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CheckMarkView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		807AF7822B12F8DC16831130DD54CC94 /* SwipeTableViewCell+Display.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwipeTableViewCell+Display.swift"; path = "Source/SwipeTableViewCell+Display.swift"; sourceTree = "<group>"; };
+		810EED5AB63E66222D4C0040B44E0330 /* SwipeCellKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeCellKit-umbrella.h"; sourceTree = "<group>"; };
+		87E48ABDD4B810B526180E520D823345 /* SwipeAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeAction.swift; path = Source/SwipeAction.swift; sourceTree = "<group>"; };
+		8926865F3ECB684940D379E7404585C8 /* SwipeCellKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwipeCellKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BE8C85B73EB8582C050A4A53A67B258 /* Swipeable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Swipeable.swift; path = Source/Swipeable.swift; sourceTree = "<group>"; };
 		8C6ABEA9C449AB4BEA3213F55C73826E /* Pods-Memento-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Memento-frameworks.sh"; sourceTree = "<group>"; };
 		8DE41B908B57F27EE2AE1EE399CD004C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E693CD1BACC24A51DA51373E50FA1A2 /* SwipeCellKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwipeCellKit.modulemap; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		943DC22ABBB4FB0CB5B324A008EBC4F2 /* CheckMarkView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CheckMarkView.swift; path = CheckMarkView/Sources/CheckMarkView.swift; sourceTree = "<group>"; };
+		972ACBBFDA23ECCCABB5D89C49429E79 /* CheckMarkView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CheckMarkView-umbrella.h"; sourceTree = "<group>"; };
 		9887EF61EEBB62CB9A0F6B61B6A2C17C /* Pods-Memento-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Memento-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9B122C829C555AF8FAE170584BA4EBBA /* RandomUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RandomUtils.m; path = RandomUtils/RandomUtils.m; sourceTree = "<group>"; };
-		A15800127B4043F4EB6B29135AC24A00 /* CheckMarkView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CheckMarkView.modulemap; sourceTree = "<group>"; };
-		B5B079BF2E2BEFB87BD6DACA321E4D4A /* CheckMarkView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CheckMarkView.xcconfig; sourceTree = "<group>"; };
-		B8F383C4C73596345A4947CB041D8614 /* RandomUtils.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RandomUtils.modulemap; sourceTree = "<group>"; };
-		B996CF12B1530EAD9613E8D4F04CF2FF /* CheckMarkView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CheckMarkView-prefix.pch"; sourceTree = "<group>"; };
+		9AB81AB02273DE71DF06E06F26467824 /* SwipeTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeTableViewCell.swift; path = Source/SwipeTableViewCell.swift; sourceTree = "<group>"; };
+		9CC86CC9F66A8F6EFD6E7DB63E38C822 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A03D518E7A4551431A7C0737D7F63AB5 /* SwipeTableViewCell+Accessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwipeTableViewCell+Accessibility.swift"; path = "Source/SwipeTableViewCell+Accessibility.swift"; sourceTree = "<group>"; };
+		A289952EE32080CDBDA1C949634890EA /* SwipeCollectionViewCell+Display.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwipeCollectionViewCell+Display.swift"; path = "Source/SwipeCollectionViewCell+Display.swift"; sourceTree = "<group>"; };
+		A76F135117276049657B224DCDBB66EE /* RandomUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RandomUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEB2A9BDA708748B76AFB4476567158F /* SwipeCellKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwipeCellKit.xcconfig; sourceTree = "<group>"; };
+		B6005117639F2D645E34F9FEC841B07A /* SwipeCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeCollectionViewCell.swift; path = Source/SwipeCollectionViewCell.swift; sourceTree = "<group>"; };
+		B6FAC36774715DB52F0A3FF8F9D77C71 /* SwipeActionButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeActionButton.swift; path = Source/SwipeActionButton.swift; sourceTree = "<group>"; };
+		B8C57039046BCA2815F5C29A048F8244 /* CheckMarkView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CheckMarkView-prefix.pch"; sourceTree = "<group>"; };
+		B9A468D31FAE4E2A8A4102B9D752EA87 /* Pods_Memento.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memento.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C26B26AE5388F7B514F8A4D509710DB1 /* SwipeOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeOptions.swift; path = Source/SwipeOptions.swift; sourceTree = "<group>"; };
+		C54F844E57B860E1673F885B6C26D364 /* SwipeAccessibilityCustomAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeAccessibilityCustomAction.swift; path = Source/SwipeAccessibilityCustomAction.swift; sourceTree = "<group>"; };
+		CB998AB34F961741084A423AA8612106 /* SwipeTableViewCellDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeTableViewCellDelegate.swift; path = Source/SwipeTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		CEB3706A6E4BFBEE6944B45D889F9127 /* CheckMarkView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CheckMarkView.modulemap; sourceTree = "<group>"; };
 		D00DAEC53A15342DBB821B2288964BEA /* Pods-Memento-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Memento-dummy.m"; sourceTree = "<group>"; };
-		D0964CADCBC5F0682B86F1BBF4D9C274 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D75690DBA74E790664B7A4CE2C79ECCB /* Pods_Memento.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memento.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D94378298F1CC836E06F8392ED0298E3 /* RandomUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RandomUtils.m; path = RandomUtils/RandomUtils.m; sourceTree = "<group>"; };
+		DC709BC8FA205B066D0B421BB9D2EBD3 /* SwipeCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeCollectionViewCellDelegate.swift; path = Source/SwipeCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
+		E65951386B770CE8A1E1D306462DDB03 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Source/Extensions.swift; sourceTree = "<group>"; };
 		ED398CD739F856BB246EF30D91ADFE07 /* Pods-Memento.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Memento.modulemap"; sourceTree = "<group>"; };
 		F581EB5A94002D4C389AA247FBD8163D /* Pods-Memento-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Memento-umbrella.h"; sourceTree = "<group>"; };
+		F7B046776237AB1BC4B451083587AAE5 /* SwipeActionTransitioning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeActionTransitioning.swift; path = Source/SwipeActionTransitioning.swift; sourceTree = "<group>"; };
 		FB9DABC471CF24B533E692ECE14FE727 /* Pods-Memento-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Memento-acknowledgements.plist"; sourceTree = "<group>"; };
+		FD34710BB04891A868EF3E9C87731AA7 /* SwipeExpanding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeExpanding.swift; path = Source/SwipeExpanding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		41A19CE3EA22EB70846B3D6105C8C111 /* Frameworks */ = {
+		62FC3A097807A55F2870215733ED41EC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41ACAB98A2E1FAAF9A66E22F945F8727 /* Foundation.framework in Frameworks */,
+				5E50C953877DF484F38C80707F986D0E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C8EA086F2F57B22F8DB02E782B57409D /* Frameworks */ = {
+		6B7361D38ABF30DF6A17ED43A7906F60 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EF11A6EC7A765053ED4BF066BBB86BE /* Foundation.framework in Frameworks */,
+				B644116DC398BE3647AB2397815992F2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,16 +157,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F0AAB2B2400753A2ED2D978C847C3DF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7965159F4A4D7AF8B7CB6460EE358DC1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		283B7706B3FFAB511C6C2EDA85C7B1AB /* Pods */ = {
+		0D23E94BC36F0B7542AFEA908B92F570 /* CheckMarkView */ = {
 			isa = PBXGroup;
 			children = (
-				9374A5F9D63D939CEE8D34ED6A339892 /* CheckMarkView */,
-				E8E18DF7D32B448262A6C38A66D3AFC3 /* RandomUtils */,
+				943DC22ABBB4FB0CB5B324A008EBC4F2 /* CheckMarkView.swift */,
+				DC54E86CBFB0F41CB0138F91F2144A83 /* Support Files */,
 			);
-			name = Pods;
+			path = CheckMarkView;
 			sourceTree = "<group>";
 		};
 		2C512B918D045DC8C9B75BD57BC0017B /* Pods-Memento */ = {
@@ -126,14 +195,28 @@
 			path = "Target Support Files/Pods-Memento";
 			sourceTree = "<group>";
 		};
-		54A1583504F5B06F8E6C8BFC4FAA8397 /* Products */ = {
+		3891C5CA4C1BF2490D9F450C92F4691F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				4F7862005F2E9D120803C3D16E3D5CED /* CheckMarkView.framework */,
-				D75690DBA74E790664B7A4CE2C79ECCB /* Pods_Memento.framework */,
-				8343C0BCC2CD8A5209A082ACFB995899 /* RandomUtils.framework */,
+				9CC86CC9F66A8F6EFD6E7DB63E38C822 /* Info.plist */,
+				6E6D39C89A73C478F51B1CEC3C389EAB /* RandomUtils.modulemap */,
+				0926C778BB72AAA37F27C15D3E11EDF6 /* RandomUtils.xcconfig */,
+				47A46846CA8AAE4C1A4760EBD7ED5197 /* RandomUtils-dummy.m */,
+				4F066D36E962A020BB195E9204F1A913 /* RandomUtils-prefix.pch */,
+				5E4FBDE6FD0B780AE6973FD2D957EBB6 /* RandomUtils-umbrella.h */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/RandomUtils";
+			sourceTree = "<group>";
+		};
+		41E1A04E4EE7965B0B429424783E7AF2 /* RandomUtils */ = {
+			isa = PBXGroup;
+			children = (
+				74E0029896DB2562FC4055B64C370188 /* RandomUtils.h */,
+				D94378298F1CC836E06F8392ED0298E3 /* RandomUtils.m */,
+				3891C5CA4C1BF2490D9F450C92F4691F /* Support Files */,
+			);
+			path = RandomUtils;
 			sourceTree = "<group>";
 		};
 		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
@@ -144,38 +227,70 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		65CE048894DDAD42495E17FA8F4492C7 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				A15800127B4043F4EB6B29135AC24A00 /* CheckMarkView.modulemap */,
-				B5B079BF2E2BEFB87BD6DACA321E4D4A /* CheckMarkView.xcconfig */,
-				336A14157064E4554A90FE79324D9A6E /* CheckMarkView-dummy.m */,
-				B996CF12B1530EAD9613E8D4F04CF2FF /* CheckMarkView-prefix.pch */,
-				57ACD036A792B0FE1D241C33D0E5BF64 /* CheckMarkView-umbrella.h */,
-				D0964CADCBC5F0682B86F1BBF4D9C274 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/CheckMarkView";
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				283B7706B3FFAB511C6C2EDA85C7B1AB /* Pods */,
-				54A1583504F5B06F8E6C8BFC4FAA8397 /* Products */,
+				F4A5C01E6D930CC60FB303125CE85A6C /* Pods */,
+				82EE66D2E3EF3B615F29835178BE0719 /* Products */,
 				D521B5C58AF5F057522D7DE90C4B77BA /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		9374A5F9D63D939CEE8D34ED6A339892 /* CheckMarkView */ = {
+		82EE66D2E3EF3B615F29835178BE0719 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				25F9F11590AA860EFDE75D0B3C3BAEA4 /* CheckMarkView.swift */,
-				65CE048894DDAD42495E17FA8F4492C7 /* Support Files */,
+				7677649E160F2BFE38B956734ACAB829 /* CheckMarkView.framework */,
+				B9A468D31FAE4E2A8A4102B9D752EA87 /* Pods_Memento.framework */,
+				A76F135117276049657B224DCDBB66EE /* RandomUtils.framework */,
+				8926865F3ECB684940D379E7404585C8 /* SwipeCellKit.framework */,
 			);
-			path = CheckMarkView;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		862002D54E2977B540EB7394ED26FE24 /* SwipeCellKit */ = {
+			isa = PBXGroup;
+			children = (
+				E65951386B770CE8A1E1D306462DDB03 /* Extensions.swift */,
+				8BE8C85B73EB8582C050A4A53A67B258 /* Swipeable.swift */,
+				C54F844E57B860E1673F885B6C26D364 /* SwipeAccessibilityCustomAction.swift */,
+				87E48ABDD4B810B526180E520D823345 /* SwipeAction.swift */,
+				B6FAC36774715DB52F0A3FF8F9D77C71 /* SwipeActionButton.swift */,
+				2638432663D4508BF9ECAA6925DB75B4 /* SwipeActionsView.swift */,
+				F7B046776237AB1BC4B451083587AAE5 /* SwipeActionTransitioning.swift */,
+				2D324B8A1908DACCF68335CF7A6F63B9 /* SwipeAnimator.swift */,
+				B6005117639F2D645E34F9FEC841B07A /* SwipeCollectionViewCell.swift */,
+				6C0579E4C41FD5C56FA4EE441A48E267 /* SwipeCollectionViewCell+Accessibility.swift */,
+				A289952EE32080CDBDA1C949634890EA /* SwipeCollectionViewCell+Display.swift */,
+				DC709BC8FA205B066D0B421BB9D2EBD3 /* SwipeCollectionViewCellDelegate.swift */,
+				0C01A6ECC8E664B97407949B33A227F6 /* SwipeController.swift */,
+				FD34710BB04891A868EF3E9C87731AA7 /* SwipeExpanding.swift */,
+				76081C6525045F00726E912ADFE61143 /* SwipeExpansionStyle.swift */,
+				5A583ECB3086DF1EE735C1EB735793D0 /* SwipeFeedback.swift */,
+				C26B26AE5388F7B514F8A4D509710DB1 /* SwipeOptions.swift */,
+				9AB81AB02273DE71DF06E06F26467824 /* SwipeTableViewCell.swift */,
+				A03D518E7A4551431A7C0737D7F63AB5 /* SwipeTableViewCell+Accessibility.swift */,
+				807AF7822B12F8DC16831130DD54CC94 /* SwipeTableViewCell+Display.swift */,
+				CB998AB34F961741084A423AA8612106 /* SwipeTableViewCellDelegate.swift */,
+				3B7E32A342F8FD03E06331A67A76E43A /* SwipeTransitionLayout.swift */,
+				9CE3F51A96FCB492AA340C6AC5A15D78 /* Support Files */,
+			);
+			path = SwipeCellKit;
+			sourceTree = "<group>";
+		};
+		9CE3F51A96FCB492AA340C6AC5A15D78 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				10E4D24FBDBFD98F6FD604C17C2ACCF4 /* Info.plist */,
+				8E693CD1BACC24A51DA51373E50FA1A2 /* SwipeCellKit.modulemap */,
+				AEB2A9BDA708748B76AFB4476567158F /* SwipeCellKit.xcconfig */,
+				5A84E4A3B7B11DDEEE128CB9A95A6CC1 /* SwipeCellKit-dummy.m */,
+				1A8BAB98A91080B44D1B82B41785070E /* SwipeCellKit-prefix.pch */,
+				810EED5AB63E66222D4C0040B44E0330 /* SwipeCellKit-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwipeCellKit";
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -194,28 +309,28 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		E8E18DF7D32B448262A6C38A66D3AFC3 /* RandomUtils */ = {
+		DC54E86CBFB0F41CB0138F91F2144A83 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				270C769326091F18DD2D37091ABA235A /* RandomUtils.h */,
-				9B122C829C555AF8FAE170584BA4EBBA /* RandomUtils.m */,
-				FA627121D446108921D9D5CAC2B241FA /* Support Files */,
-			);
-			path = RandomUtils;
-			sourceTree = "<group>";
-		};
-		FA627121D446108921D9D5CAC2B241FA /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				5E00A20A19648D67F41689EBE34C6D75 /* Info.plist */,
-				B8F383C4C73596345A4947CB041D8614 /* RandomUtils.modulemap */,
-				665F6327F391BEEA235F97D130B4C0E1 /* RandomUtils.xcconfig */,
-				64D762AC6DEDDF876B5383CBC8D068CD /* RandomUtils-dummy.m */,
-				8BE44D4E0B2111138955747206C682B2 /* RandomUtils-prefix.pch */,
-				595EDEEAAFEBA0E8590E70E61610E1BF /* RandomUtils-umbrella.h */,
+				CEB3706A6E4BFBEE6944B45D889F9127 /* CheckMarkView.modulemap */,
+				51607612145E0D1B6F47F35B21E6293B /* CheckMarkView.xcconfig */,
+				6447F4BD8530A8E172CA9D4A1306EE6A /* CheckMarkView-dummy.m */,
+				B8C57039046BCA2815F5C29A048F8244 /* CheckMarkView-prefix.pch */,
+				972ACBBFDA23ECCCABB5D89C49429E79 /* CheckMarkView-umbrella.h */,
+				4FACFF27DF292FC86FE857D00FA84536 /* Info.plist */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/RandomUtils";
+			path = "../Target Support Files/CheckMarkView";
+			sourceTree = "<group>";
+		};
+		F4A5C01E6D930CC60FB303125CE85A6C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0D23E94BC36F0B7542AFEA908B92F570 /* CheckMarkView */,
+				41E1A04E4EE7965B0B429424783E7AF2 /* RandomUtils */,
+				862002D54E2977B540EB7394ED26FE24 /* SwipeCellKit */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,34 +344,42 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4BC594C5C1AFB3C97CC3B5B19021720E /* Headers */ = {
+		2FC0B2419787FF771FEC3001E52DBE1A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DAA0B1F293B1CE2C71BC493FA38F4AE /* RandomUtils-umbrella.h in Headers */,
-				0D77DA96B7A796393271F5C9B5927785 /* RandomUtils.h in Headers */,
+				9318D5099859514F09FF42EC82F75295 /* SwipeCellKit-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE12928B56BCDC8D005063B6B7A29728 /* Headers */ = {
+		4F4A466257654DEB903427DAB62D648F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9660B07AC8EEF427FDCE79F2F72E30A1 /* Pods-Memento-umbrella.h in Headers */,
+				29A8D9A81C9E31FC5F9B3AB381833428 /* Pods-Memento-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71CC9E7A1F1664A3669BCA7D3FCD3CA3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE0B76BB2525C291781EF324A7AA761E /* RandomUtils-umbrella.h in Headers */,
+				5B83121B44D7565DF79E7015187EBA17 /* RandomUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		566A4FC81D3D91C5D974F225D100BB9C /* RandomUtils */ = {
+		12D963047144B0378776F1B7A1962589 /* RandomUtils */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E6F84653B2CFF8568C8FF1534967930 /* Build configuration list for PBXNativeTarget "RandomUtils" */;
+			buildConfigurationList = B1D47168072970CA28338D66755DA6D2 /* Build configuration list for PBXNativeTarget "RandomUtils" */;
 			buildPhases = (
-				4BC594C5C1AFB3C97CC3B5B19021720E /* Headers */,
-				9F2F6941D9CFA5AF1509EA9166FD5735 /* Sources */,
-				C8EA086F2F57B22F8DB02E782B57409D /* Frameworks */,
-				FA1DDA2AA2C037CE0F708DCCAFD3FA92 /* Resources */,
+				71CC9E7A1F1664A3669BCA7D3FCD3CA3 /* Headers */,
+				AB57D0BC9D43F53ED75826AA17A667DC /* Sources */,
+				62FC3A097807A55F2870215733ED41EC /* Frameworks */,
+				5937C3E791625DAB1D43C29F5C4B91CE /* Resources */,
 			);
 			buildRules = (
 			);
@@ -264,27 +387,46 @@
 			);
 			name = RandomUtils;
 			productName = RandomUtils;
-			productReference = 8343C0BCC2CD8A5209A082ACFB995899 /* RandomUtils.framework */;
+			productReference = A76F135117276049657B224DCDBB66EE /* RandomUtils.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A23C5F7AB29F710107E6CB16BF8A896D /* Pods-Memento */ = {
+		557F138F2AAE9A4F5E14C5968D7DC5EA /* Pods-Memento */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D852E6A4E6240CABC37BDB455663C7FF /* Build configuration list for PBXNativeTarget "Pods-Memento" */;
+			buildConfigurationList = C3B0574A7C168B277EB72A7E9BC4B041 /* Build configuration list for PBXNativeTarget "Pods-Memento" */;
 			buildPhases = (
-				CE12928B56BCDC8D005063B6B7A29728 /* Headers */,
-				22F6057D2CB67240CD6CA667A3E49172 /* Sources */,
-				41A19CE3EA22EB70846B3D6105C8C111 /* Frameworks */,
-				A7812F4140DCB716F4E7AAA322987D32 /* Resources */,
+				4F4A466257654DEB903427DAB62D648F /* Headers */,
+				A3868943FE23C1977C95C4B97165A95E /* Sources */,
+				6B7361D38ABF30DF6A17ED43A7906F60 /* Frameworks */,
+				98F95DF5EA2E834B11805D5544151874 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5C639D36AA29500EE60A1DD7756318BE /* PBXTargetDependency */,
-				D02C8FD681DE85058EF031CACA00FDC6 /* PBXTargetDependency */,
+				5EF63501BB6A1F84281415FA7EB0F213 /* PBXTargetDependency */,
+				4F7C7E7F0119B405FAD7E6B79A7B2009 /* PBXTargetDependency */,
+				83E5793F938985878A7659ACA3D82DAE /* PBXTargetDependency */,
 			);
 			name = "Pods-Memento";
 			productName = "Pods-Memento";
-			productReference = D75690DBA74E790664B7A4CE2C79ECCB /* Pods_Memento.framework */;
+			productReference = B9A468D31FAE4E2A8A4102B9D752EA87 /* Pods_Memento.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6AFDB859FDCC7F48883C5E518A6D0F38 /* SwipeCellKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00A52B6E59B16084FB004C710F883676 /* Build configuration list for PBXNativeTarget "SwipeCellKit" */;
+			buildPhases = (
+				2FC0B2419787FF771FEC3001E52DBE1A /* Headers */,
+				57BD3F234DC38678CD27B5AD8AFC7E85 /* Sources */,
+				F0AAB2B2400753A2ED2D978C847C3DF8 /* Frameworks */,
+				1ED27BFFC92F1FEC8636EAA721ECD52C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwipeCellKit;
+			productName = SwipeCellKit;
+			productReference = 8926865F3ECB684940D379E7404585C8 /* SwipeCellKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E41C3C357B7AC06EB6A3E16C8B250035 /* CheckMarkView */ = {
@@ -302,7 +444,7 @@
 			);
 			name = CheckMarkView;
 			productName = CheckMarkView;
-			productReference = 4F7862005F2E9D120803C3D16E3D5CED /* CheckMarkView.framework */;
+			productReference = 7677649E160F2BFE38B956734ACAB829 /* CheckMarkView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -312,7 +454,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1010;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -322,18 +464,26 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 54A1583504F5B06F8E6C8BFC4FAA8397 /* Products */;
+			productRefGroup = 82EE66D2E3EF3B615F29835178BE0719 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				E41C3C357B7AC06EB6A3E16C8B250035 /* CheckMarkView */,
-				A23C5F7AB29F710107E6CB16BF8A896D /* Pods-Memento */,
-				566A4FC81D3D91C5D974F225D100BB9C /* RandomUtils */,
+				557F138F2AAE9A4F5E14C5968D7DC5EA /* Pods-Memento */,
+				12D963047144B0378776F1B7A1962589 /* RandomUtils */,
+				6AFDB859FDCC7F48883C5E518A6D0F38 /* SwipeCellKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1ED27BFFC92F1FEC8636EAA721ECD52C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3E2C94B1DE21A681A92F12C73FE3E4CB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -341,14 +491,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A7812F4140DCB716F4E7AAA322987D32 /* Resources */ = {
+		5937C3E791625DAB1D43C29F5C4B91CE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA1DDA2AA2C037CE0F708DCCAFD3FA92 /* Resources */ = {
+		98F95DF5EA2E834B11805D5544151874 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -367,41 +517,140 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		22F6057D2CB67240CD6CA667A3E49172 /* Sources */ = {
+		57BD3F234DC38678CD27B5AD8AFC7E85 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5706B9695DB255813F90CA1BC90638C4 /* Pods-Memento-dummy.m in Sources */,
+				39E6555B80505EB585C301BF98ED058F /* Extensions.swift in Sources */,
+				4383559C7CFBFFCA6B0E5B63AFC1624D /* Swipeable.swift in Sources */,
+				C900F808BD9ACD034919FBD19D6C298E /* SwipeAccessibilityCustomAction.swift in Sources */,
+				2E4BFBDDB442C3C578EE7D63A5AE2CBF /* SwipeAction.swift in Sources */,
+				9D90FE06C095135C154F8FAA5E8A03B0 /* SwipeActionButton.swift in Sources */,
+				4AF1A9FB450A9C1CDD3DE6832B942CD4 /* SwipeActionsView.swift in Sources */,
+				37D0993873D7E0259847B939C5CB8B2D /* SwipeActionTransitioning.swift in Sources */,
+				18B5AABD10905834E102BE99A4E9AD4B /* SwipeAnimator.swift in Sources */,
+				3E3D7A01CCF767B05E1B303390B6B5DA /* SwipeCellKit-dummy.m in Sources */,
+				37C16AA544DDEF54351309EF69EB8562 /* SwipeCollectionViewCell+Accessibility.swift in Sources */,
+				6E3823683BE582413E5E9CE153E9A8C2 /* SwipeCollectionViewCell+Display.swift in Sources */,
+				89AF35635E606A83B5E14F5D488C28A8 /* SwipeCollectionViewCell.swift in Sources */,
+				3E1E1F3C6678FEC27FFE383F46645EC0 /* SwipeCollectionViewCellDelegate.swift in Sources */,
+				876A1FE5F1A05842259D584DF3B23EB1 /* SwipeController.swift in Sources */,
+				10E97EFA4068794EBCE0673BBF94DE5B /* SwipeExpanding.swift in Sources */,
+				9A87C053F65265F3BA09683E78EC02D9 /* SwipeExpansionStyle.swift in Sources */,
+				2F80FED979F6E73A098E8C51CC7B60CC /* SwipeFeedback.swift in Sources */,
+				9CD2609A70242FB6AC9B9EA9385E1B88 /* SwipeOptions.swift in Sources */,
+				97AB7D9701781D51F87882C5372B3DCD /* SwipeTableViewCell+Accessibility.swift in Sources */,
+				8C5BB5937AB58D7AB24F861374B2892B /* SwipeTableViewCell+Display.swift in Sources */,
+				D8A1FC8A5F9233C039023E669FBB369C /* SwipeTableViewCell.swift in Sources */,
+				F010CE4C3DE91726FBC349A4A19B2478 /* SwipeTableViewCellDelegate.swift in Sources */,
+				D765D61110A012A02668709E1EB5A3EA /* SwipeTransitionLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F2F6941D9CFA5AF1509EA9166FD5735 /* Sources */ = {
+		A3868943FE23C1977C95C4B97165A95E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7FA408357ED9064C5E507215213BA38 /* RandomUtils-dummy.m in Sources */,
-				E112CB8BEAC2457D338BE8EBC7482A71 /* RandomUtils.m in Sources */,
+				8FA1A94E989BF9AD1845064ECA2A8358 /* Pods-Memento-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB57D0BC9D43F53ED75826AA17A667DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1EC2AE95693FDF4089207FD7FDF79F7 /* RandomUtils-dummy.m in Sources */,
+				F86E487FC8FE5DA33EB7E6F7B28A0769 /* RandomUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5C639D36AA29500EE60A1DD7756318BE /* PBXTargetDependency */ = {
+		4F7C7E7F0119B405FAD7E6B79A7B2009 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RandomUtils;
+			target = 12D963047144B0378776F1B7A1962589 /* RandomUtils */;
+			targetProxy = 2D3059E2D15ED80659C82168D236A92E /* PBXContainerItemProxy */;
+		};
+		5EF63501BB6A1F84281415FA7EB0F213 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CheckMarkView;
 			target = E41C3C357B7AC06EB6A3E16C8B250035 /* CheckMarkView */;
-			targetProxy = 40AF640A02B28FA5987AD1FAD91723AE /* PBXContainerItemProxy */;
+			targetProxy = B55A8A8FA7C1D7FBF348BB8872E52523 /* PBXContainerItemProxy */;
 		};
-		D02C8FD681DE85058EF031CACA00FDC6 /* PBXTargetDependency */ = {
+		83E5793F938985878A7659ACA3D82DAE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = RandomUtils;
-			target = 566A4FC81D3D91C5D974F225D100BB9C /* RandomUtils */;
-			targetProxy = 249588FFE08E10A6D21D66989181F015 /* PBXContainerItemProxy */;
+			name = SwipeCellKit;
+			target = 6AFDB859FDCC7F48883C5E518A6D0F38 /* SwipeCellKit */;
+			targetProxy = 8518A4059D1E093C1643AD259E4BE21A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1B6F850E906810ED3D5C99C43430E477 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0926C778BB72AAA37F27C15D3E11EDF6 /* RandomUtils.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RandomUtils/RandomUtils-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RandomUtils/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RandomUtils/RandomUtils.modulemap";
+				PRODUCT_MODULE_NAME = RandomUtils;
+				PRODUCT_NAME = RandomUtils;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		30BCC9638A8EA66E599121EA9D753C41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AEB2A9BDA708748B76AFB4476567158F /* SwipeCellKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwipeCellKit/SwipeCellKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwipeCellKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwipeCellKit/SwipeCellKit.modulemap";
+				PRODUCT_MODULE_NAME = SwipeCellKit;
+				PRODUCT_NAME = SwipeCellKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		40B45BB3CF3EE4476259302A7FAAD78F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -462,12 +711,10 @@
 			};
 			name = Release;
 		};
-		770547A10D4C5DF74540A45C7770B2C8 /* Debug */ = {
+		72841E23761EEE2781444E970898B9A0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0DFB625B33A47F77B8CA9BA045865CCE /* Pods-Memento.debug.xcconfig */;
+			baseConfigurationReference = AEB2A9BDA708748B76AFB4476567158F /* SwipeCellKit.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -477,26 +724,57 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Memento/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SwipeCellKit/SwipeCellKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwipeCellKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Memento/Pods-Memento.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/SwipeCellKit/SwipeCellKit.modulemap";
+				PRODUCT_MODULE_NAME = SwipeCellKit;
+				PRODUCT_NAME = SwipeCellKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
+		};
+		798F400D97F8B1159FD46BB04F1B0297 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0926C778BB72AAA37F27C15D3E11EDF6 /* RandomUtils.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RandomUtils/RandomUtils-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RandomUtils/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RandomUtils/RandomUtils.modulemap";
+				PRODUCT_MODULE_NAME = RandomUtils;
+				PRODUCT_NAME = RandomUtils;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		85ED3013A635C27F8B7FAF51362B108C /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -562,10 +840,12 @@
 			};
 			name = Debug;
 		};
-		9A3B0934A7A74507D331AC963899619E /* Debug */ = {
+		8F96FC9242949F0F138494C83CEA7FEC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 665F6327F391BEEA235F97D130B4C0E1 /* RandomUtils.xcconfig */;
+			baseConfigurationReference = 0DFB625B33A47F77B8CA9BA045865CCE /* Pods-Memento.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -575,57 +855,28 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/RandomUtils/RandomUtils-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RandomUtils/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Memento/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RandomUtils/RandomUtils.modulemap";
-				PRODUCT_MODULE_NAME = RandomUtils;
-				PRODUCT_NAME = RandomUtils;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Memento/Pods-Memento.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		B0FC461C2620F5CA4280D622C1A4E45E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 665F6327F391BEEA235F97D130B4C0E1 /* RandomUtils.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/RandomUtils/RandomUtils-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RandomUtils/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RandomUtils/RandomUtils.modulemap";
-				PRODUCT_MODULE_NAME = RandomUtils;
-				PRODUCT_NAME = RandomUtils;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C18E000FB8C07B189DE21D5E27C13964 /* Release */ = {
+		D6B3C91C73CEC85F03D6664ABC9B089C /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6ACB1E8FBCA5C1E3D407F95C4B772DDA /* Pods-Memento.release.xcconfig */;
 			buildSettings = {
@@ -663,7 +914,7 @@
 		};
 		EB1C541E42E261C3B1D3EC5D77990387 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5B079BF2E2BEFB87BD6DACA321E4D4A /* CheckMarkView.xcconfig */;
+			baseConfigurationReference = 51607612145E0D1B6F47F35B21E6293B /* CheckMarkView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -696,7 +947,7 @@
 		};
 		F2EEEF4EA04EE2ECADD065EEA2A5A088 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5B079BF2E2BEFB87BD6DACA321E4D4A /* CheckMarkView.xcconfig */;
+			baseConfigurationReference = 51607612145E0D1B6F47F35B21E6293B /* CheckMarkView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -729,20 +980,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		00A52B6E59B16084FB004C710F883676 /* Build configuration list for PBXNativeTarget "SwipeCellKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30BCC9638A8EA66E599121EA9D753C41 /* Debug */,
+				72841E23761EEE2781444E970898B9A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				85ED3013A635C27F8B7FAF51362B108C /* Debug */,
 				40B45BB3CF3EE4476259302A7FAAD78F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3E6F84653B2CFF8568C8FF1534967930 /* Build configuration list for PBXNativeTarget "RandomUtils" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9A3B0934A7A74507D331AC963899619E /* Debug */,
-				B0FC461C2620F5CA4280D622C1A4E45E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -756,11 +1007,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D852E6A4E6240CABC37BDB455663C7FF /* Build configuration list for PBXNativeTarget "Pods-Memento" */ = {
+		B1D47168072970CA28338D66755DA6D2 /* Build configuration list for PBXNativeTarget "RandomUtils" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				770547A10D4C5DF74540A45C7770B2C8 /* Debug */,
-				C18E000FB8C07B189DE21D5E27C13964 /* Release */,
+				1B6F850E906810ED3D5C99C43430E477 /* Debug */,
+				798F400D97F8B1159FD46BB04F1B0297 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3B0574A7C168B277EB72A7E9BC4B041 /* Build configuration list for PBXNativeTarget "Pods-Memento" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F96FC9242949F0F138494C83CEA7FEC /* Debug */,
+				D6B3C91C73CEC85F03D6664ABC9B089C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwipeCellKit
 extension UITextField {
     func setBottomBorder() {
         self.borderStyle = .none
@@ -20,11 +21,21 @@ extension UITextField {
     }
     
 }
-class CardCell: UITableViewCell {
+protocol CardCellDelegate{
+    func appendToChanged(indexPath: IndexPath)
+}
+
+class CardCell: SwipeTableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var cardView: UIView!
     @IBOutlet var side1: UITextField!
     @IBOutlet var side2: UITextField!
+    var indexPath : IndexPath?
+    var hasChanged : Bool = false
+    var cardDelegate : CardCellDelegate?
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        cardDelegate?.appendToChanged(indexPath: indexPath!)
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layoutIfNeeded()
@@ -32,8 +43,12 @@ class CardCell: UITableViewCell {
         
     }
     override func layoutSubviews() {
+        super.layoutSubviews()
+
         side1.setBottomBorder()
         side2.setBottomBorder()
+        side1.delegate = self
+        side2.delegate = self
     }
     
     

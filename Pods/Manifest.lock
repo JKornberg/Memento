@@ -1,20 +1,24 @@
 PODS:
   - CheckMarkView (0.4.3)
   - RandomUtils (0.2.0)
+  - SwipeCellKit (2.5.0)
 
 DEPENDENCIES:
   - CheckMarkView
   - RandomUtils
+  - SwipeCellKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CheckMarkView
     - RandomUtils
+    - SwipeCellKit
 
 SPEC CHECKSUMS:
   CheckMarkView: 8bcac176673ed40d05f220d335de92f6a2702404
   RandomUtils: 46619b94f7f72743475308981bca450459600fb7
+  SwipeCellKit: d8f2617538ce3021cb0a11d1b93856a06a2f2e20
 
-PODFILE CHECKSUM: d9e4d3ea3aa783b7d03ad757d65e53c0ef4778f9
+PODFILE CHECKSUM: e3ba10700b3d41f7e966ae9debf34cd01f93e61e
 
 COCOAPODS: 1.5.3

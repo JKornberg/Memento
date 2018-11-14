@@ -7,16 +7,21 @@
 //
 
 import UIKit
+import SwipeCellKit
 protocol CardsControllerDelegate{
     func createAndSaveCards(title: String, cards: [Card])
     func saveCards(cards: [Card], setId: Int?)
+    func removeCard(indexPath: IndexPath, setId: Int?)
 }
 
 class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate  {
+    
     var cards : [Card] = [Card]()
     var setName : String?
     var setId : Int?
     var saveAction : UIAlertAction!
+    var cardsToUpdate = [IndexPath]()
+    var cardsToRemove = [IndexPath]()
     @IBOutlet weak var tableView: UITableView!
     var delegate : CardsControllerDelegate?
     override func viewDidLoad() {
@@ -27,6 +32,7 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         initToolbar()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.donePressed(_:)))
         self.navigationItem.rightBarButtonItem = doneButton
+        self.navigationItem.title = setName
         configureTableView()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -63,15 +69,16 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func refreshArray()
     {
-        for (index, card) in cards.enumerated(){
-            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! CardCell
+        for path in cardsToUpdate{
+            let cell = tableView.cellForRow(at: IndexPath(row: path.row, section: 0)) as! CardCell
             if let text = cell.side1.text {
-                card.side1 = text
+                cards[path.row].side1 = text
             }
             if let text = cell.side2.text {
-                card.side2 = text
+                cards[path.row].side2 = text
             }
         }
+        cardsToUpdate = []
     }
     
     @IBAction func donePressed(_ barItem: UIBarButtonItem)
@@ -83,15 +90,15 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         else{
             var textField = UITextField()
-            textField.delegate = self
             let alert  = UIAlertController(title: "Would you like to save this set of cards?", message: "", preferredStyle: .alert)
             alert.addTextField { (alertTextField) in
                 alertTextField.placeholder = "Enter set name"
                 textField = alertTextField
                 textField.delegate = self
+                textField.tag = 2
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (UIAlertAction) in
-                self.navigationController?.popViewController(animated: true)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+                //
             }
             
             //Set up Save Button and add to alert
@@ -112,13 +119,14 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
         // if text length is greater than 0 enables the button, else disables it
-        let existingText = textField.text as NSString?
-        if let replacedText = existingText?.replacingCharacters(in: range, with: string), replacedText.count > 0 {
-            saveAction.isEnabled = true
-            print("Enabled")
-        }
-        else{
-            saveAction.isEnabled = false
+        if textField.tag == 2 {
+            let existingText = textField.text as NSString?
+            if let replacedText = existingText?.replacingCharacters(in: range, with: string), replacedText.count > 0 {
+                saveAction.isEnabled = true
+            }
+            else{
+                saveAction.isEnabled = false
+            }
         }
         return true
     }
@@ -129,7 +137,7 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-    return cards.count
+        return cards.count
     }
 
     
@@ -137,8 +145,11 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCardCell", for: indexPath) as! CardCell
         cell.side1.text = cards[indexPath.row].side1
         cell.side2.text = cards[indexPath.row].side2
+        cell.delegate = self
+        cell.cardDelegate = self
         createShadow(cell: cell)
         cell.selectionStyle = .none
+        cell.indexPath = indexPath
         //cell.side1.delegate=self
         //cell.side2.delegate=self
         // Configure the cell...
@@ -154,10 +165,33 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
                                              height: cell.cardView.layer.bounds.height), transform: nil)
         
         cell.cardView.layer.shadowPath = shadowPath
-        print(cell.layer.bounds.width-40)
     }
     
+}
+extension CardsController: CardCellDelegate{
+    func appendToChanged(indexPath: IndexPath) {
+        cardsToUpdate.append(indexPath)
+    }
+}
 
+extension CardsController : SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        //Delete button
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            // handle action by updating model with deletions
+            self.refreshArray()
+            self.cards.remove(at: indexPath.row)
+            self.tableView.reloadData()
+            self.delegate?.removeCard(indexPath: indexPath, setId: self.setId)
+         }
+        deleteAction.image = UIImage(named: "delete-icon")
+        return [deleteAction]
+    }
+    
+    
+}
 
     
     /*
@@ -205,4 +239,4 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     */
 
-}
+

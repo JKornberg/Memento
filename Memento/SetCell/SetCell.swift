@@ -8,32 +8,40 @@
 
 import UIKit
 import CheckMarkView
+import SwipeCellKit
 
 protocol CellDelegate{
     func toggleSet(setID: Int, val: Bool)
 }
 
-class SetCell: UITableViewCell {
+class SetCell: SwipeTableViewCell {
     @IBOutlet weak var checkView: CheckMarkView!
     @IBOutlet weak var CellSuperView: UIView!
     @IBOutlet weak var title: UILabel!
-    var delegate : CellDelegate? = nil
+    var checkDelegate : CellDelegate? = nil
     var setID = Int()
     var setName : String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code goes here
+
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
         checkView.style = .openCircle
         checkView.setNeedsDisplay()
+        /*
+        checkView.translatesAutoresizingMaskIntoConstraints = false
+        checkView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        checkView.heightAnchor.constraint(equalToConstant: 60).isActive = true */
         let tapCheck = UITapGestureRecognizer(target: self, action: #selector(toggleCheck))
         checkView.addGestureRecognizer(tapCheck)
     }
-    
     @IBAction func toggleCheck(_ gestureRecognizer : UITapGestureRecognizer){
         if gestureRecognizer.state == .ended{
             checkView.checked = !checkView.checked
-            delegate!.toggleSet(setID:setID,val:checkView.checked)
+            checkDelegate!.toggleSet(setID:setID,val:checkView.checked)
         }
     }
     

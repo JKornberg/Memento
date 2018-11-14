@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,27 +19,27 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAh-Nu-eZT" customClass="CheckMarkView" customModule="CheckMarkView">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <rect key="frame" x="0.0" y="-3.5" width="50" height="50.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="KGZ-pm-5w2"/>
-                            <constraint firstAttribute="height" constant="50" id="rYL-Eh-ZZf"/>
+                            <constraint firstAttribute="height" constant="50" id="JyF-Um-BMA"/>
+                            <constraint firstAttribute="width" constant="50" id="c3W-gL-VLq"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxv-Zx-MLL">
-                        <rect key="frame" x="50" y="0.0" width="270" height="21"/>
+                        <rect key="frame" x="50" y="0.0" width="270" height="43.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="pAh-Nu-eZT" secondAttribute="bottom" id="5VN-mg-Ya8"/>
+                    <constraint firstItem="pAh-Nu-eZT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2zI-PW-NNW"/>
+                    <constraint firstItem="pAh-Nu-eZT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="P12-Qg-oNl"/>
                     <constraint firstItem="yxv-Zx-MLL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="VBg-7L-GZ4"/>
                     <constraint firstItem="yxv-Zx-MLL" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="e6U-dI-4kk"/>
                     <constraint firstAttribute="trailing" secondItem="yxv-Zx-MLL" secondAttribute="trailing" id="gnQ-TZ-0Zd"/>
                     <constraint firstItem="pAh-Nu-eZT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jAV-6b-LQV"/>
-                    <constraint firstItem="pAh-Nu-eZT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lLq-Yx-8Rw"/>
                     <constraint firstItem="yxv-Zx-MLL" firstAttribute="leading" secondItem="pAh-Nu-eZT" secondAttribute="trailing" id="pyf-RM-EdE"/>
                 </constraints>
             </tableViewCellContentView>

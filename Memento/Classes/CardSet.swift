@@ -17,6 +17,7 @@ class CardSet: Codable{
     var isActive = false
     var setId : Int?
     var cards : [Card] = [Card]()
+    
     init(setName : String, cards: [Card]){
         self.setName = setName
         self.isActive = false
