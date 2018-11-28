@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAh-Nu-eZT">
-                        <rect key="frame" x="0.0" y="-3.5" width="100" height="50.5"/>
+                        <rect key="frame" x="0.0" y="-3.5" width="120" height="50.5"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="do1-Az-sX0">
-                                <rect key="frame" x="10" y="10.5" width="80" height="30"/>
+                                <rect key="frame" x="10" y="10.5" width="100" height="30"/>
                                 <state key="normal" title="Active Set"/>
                                 <connections>
                                     <action selector="toggleActive:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Qje-iy-fK8"/>
@@ -35,12 +35,12 @@
                             <constraint firstItem="do1-Az-sX0" firstAttribute="leading" secondItem="pAh-Nu-eZT" secondAttribute="leading" constant="10" id="EJ3-o0-at1"/>
                             <constraint firstAttribute="trailing" secondItem="do1-Az-sX0" secondAttribute="trailing" constant="10" id="JrZ-bR-8pF"/>
                             <constraint firstAttribute="height" constant="50" id="JyF-Um-BMA"/>
-                            <constraint firstAttribute="width" constant="100" id="c3W-gL-VLq"/>
+                            <constraint firstAttribute="width" constant="120" id="c3W-gL-VLq"/>
                             <constraint firstItem="do1-Az-sX0" firstAttribute="top" secondItem="pAh-Nu-eZT" secondAttribute="top" constant="10" id="d57-TH-ksc"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxv-Zx-MLL">
-                        <rect key="frame" x="100" y="0.0" width="220" height="43.5"/>
+                        <rect key="frame" x="120" y="0.0" width="200" height="43.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>

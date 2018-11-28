@@ -12,14 +12,11 @@ import RealmSwift
 class SetSettingsController: UIViewController {
 
     @IBOutlet weak var durationPicker: UIDatePicker!
-    @IBOutlet weak var closeButton: UIImageView!
     let realm = try! Realm()
 
     var selectedSet : Set?
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeButtonPressed(_:)))
-        closeButton.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
     
@@ -27,22 +24,19 @@ class SetSettingsController: UIViewController {
         print(sender.countDownDuration)
     }
     
-    @IBAction func closeButtonPressed(_ gestureRecognizer: UITapGestureRecognizer){
-        guard gestureRecognizer.view != nil else {return}
-        if gestureRecognizer.state == .ended{
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-                print("Cancelled")
-            }
-            let closeNoSave = UIAlertAction(title: "Do Not Save", style: .destructive) { (UIAlertAction) in
-                self.dismiss(animated: true, completion: {
-                    
-                })
-            }
-            alert.addAction(cancelAction)
-            alert.addAction(closeNoSave)
-            present(alert, animated: true)
+    @IBAction func closeAction(_ sender: Any) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+            print("Cancelled")
         }
+        let closeNoSave = UIAlertAction(title: "Do Not Save", style: .destructive) { (UIAlertAction) in
+            self.dismiss(animated: true, completion: {
+                
+            })
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(closeNoSave)
+        present(alert, animated: true)
     }
     
     @IBAction func saveAction(_ sender: Any) {

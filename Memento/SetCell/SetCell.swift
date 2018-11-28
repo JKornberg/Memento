@@ -36,11 +36,16 @@ class SetCell: SwipeTableViewCell {
     func setCheckedStyle(){
         activeButton.backgroundColor = UIColor.blue
         activeButton.setTitleColor(UIColor.white, for: .normal)
+        activeButton.setTitle("Active Set", for: .normal)
     }
     
     func setUncheckedStyle(){
         activeButton.backgroundColor = UIColor.white
-        activeButton.setTitleColor(UIColor.blue, for: .normal)
+        activeButton.layer.cornerRadius = 10
+        activeButton.layer.borderColor = UIColor.blue.cgColor
+        activeButton.layer.borderWidth = 2.0;
+        activeButton.setTitleColor(UIColor.red, for: .normal)
+        activeButton.setTitle("Inactive Set", for: .normal)
     }
     @IBAction func toggleActive(_ sender: Any) {
         checkDelegate?.toggleSet(setID: setID)
