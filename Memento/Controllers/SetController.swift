@@ -8,19 +8,20 @@
 
 import UIKit
 import SwipeCellKit
-
+import CoreData
+import RealmSwift
 class SetController: UIViewController, UITableViewDelegate, UITableViewDataSource, CellDelegate {
 
     
 
-    
+    let realm = try! Realm()
 
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var sortButton: UIButton!
-    var setMap : [CardSet] = [CardSet]()
     var selectedCardSet : Int = -1
+    var setArray: Results<Set>?
     var saveAction : UIAlertAction!
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("CardSets.plist")
-    
+    var selectedSettingCell : IndexPath?
     @IBOutlet weak var SetTableView: UITableView!
     
     @IBAction func sortSets(_ sender: Any) {
@@ -29,8 +30,8 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print(dataFilePath)
-        fetchData()
+        loadData()
+        searchBar.delegate = self
         SetTableView.delegate = self
         SetTableView.dataSource = self
         SetTableView.register(UINib(nibName: "SetCell", bundle: nil), forCellReuseIdentifier: "customSetCell")
@@ -38,23 +39,33 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     //TOPIC: - Delegate Functions
-    func toggleSet(setID: Int, val: Bool) {
-        setMap[setID].isActive = val
+    func toggleSet(setID: Int) {
+        do{
+            try realm.write {
+                setArray![setID].isActive = !setArray![setID].isActive
+            }
+        } catch{
+            print("error saving toggle")
+        }
+        SetTableView.reloadData()
+        /*
+        setArray[setID].isActive = val
         print("set \(setID) is \(val)")
-        saveSets()
+        saveSets() */
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return setMap.count
+        return setArray?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let newCell = SetTableView.dequeueReusableCell(withIdentifier: "customSetCell", for: indexPath) as! SetCell
+        newCell.selectionStyle = .none
         newCell.delegate = self
         newCell.setID = indexPath.row
-        newCell.title.text = setMap[indexPath.row].setName
+        newCell.title.text = setArray?[indexPath.row].title ?? "No sets added yet"
         newCell.checkDelegate = self
-        newCell.checkView.checked = setMap[indexPath.row].isActive
+        newCell.checked = setArray?[indexPath.row].isActive ?? false
         return newCell
     }
     
@@ -66,50 +77,58 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     
     //TOPIC: Manage Data
-    func saveSets(){
-        let encoder = PropertyListEncoder()
+    func save(set: Set){
         do {
-            let data = try encoder.encode(self.setMap)
-            try data.write(to: self.dataFilePath! )
-            print("saving")
-            
+            try realm.write{
+                realm.add(set)
+            }
+        } catch {
+            print("Error saving context")
         }
-        catch{
-            print("error encoding")
-        }
+        SetTableView.reloadData()
     }
     
-    func fetchData(){
-        if let data = try? Data(contentsOf: dataFilePath!){
-            let decoder = PropertyListDecoder()
-            do{
-                setMap = try decoder.decode([CardSet].self, from: data)
-            }
-            catch{
-                print("Error loading data: \(error)")
-            }
-        }
+    func loadData(){
+        setArray = realm.objects(Set.self).sorted(byKeyPath: "dateCreated")
+        SetTableView.reloadData()
     }
+
     
     @IBAction func addButtonPressed(_ sender: Any) {
-        selectedCardSet = -1
-        performSegue(withIdentifier: "OpenCardsSet", sender: self)
+        let alert = UIAlertController(title: "Create New Set", message: "", preferredStyle: .alert)
+        var textField = UITextField()
+        alert.addTextField { (alertTextField) in
+            textField = alertTextField
+            textField.delegate = self
+        }
+        saveAction = UIAlertAction(title: "Create", style: .default, handler: { (act) in
+            let newSet = Set()
+            newSet.title = textField.text!
+            newSet.dateCreated = Date()
+            self.save(set: newSet)
+            self.SetTableView.selectRow(at: IndexPath(row: self.setArray!.count - 1, section: 0), animated: false, scrollPosition: .top)
+            self.performSegue(withIdentifier: "OpenCardsSet", sender: self)
+        })
+        saveAction.isEnabled = false
+        alert.addAction(saveAction)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+            print(action)
+        }))
+        present(alert, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "OpenCardsSet"{
             let dest = segue.destination as! CardsController
-            dest.delegate = self
-            if selectedCardSet != -1{
-                dest.cards = setMap[selectedCardSet].cards
-                dest.setName = setMap[selectedCardSet].setName
+            if let indexPath = SetTableView.indexPathForSelectedRow {
+                print("got it")
+                dest.selectedSet = setArray?[indexPath.row]
             }
-            else {
-                dest.cards = [Card(side1: "", side2: "", cardId: 0)]
+        } else if segue.identifier == "OpenSetSettings"{
+            let dest = segue.destination as! SetSettingsController
+            if let path = selectedSettingCell{
+                dest.selectedSet = setArray?[path.row]
             }
-            dest.setId = selectedCardSet
-
-            
         }
     }
     
@@ -128,14 +147,21 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
 //MARK: - SwipeTableViewController delegate methods
 extension SetController : SwipeTableViewCellDelegate{
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
+        guard orientation == .right  else { return nil }
         
         //Delete button
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             // handle action by updating model with deletions
-            self.setMap.remove(at: indexPath.row)
-            self.saveSets()
-            self.fetchData()
+            //self.setArray.remove(at: indexPath.row)
+            if let set = self.setArray?[indexPath.row]{
+                do{
+                    try self.realm.write{
+                        self.realm.delete(set)
+                    }
+                } catch{
+                    print("Error deleting set")
+                }
+            }
             self.SetTableView.reloadData()
         }
         deleteAction.image = UIImage(named: "delete-icon")
@@ -145,13 +171,19 @@ extension SetController : SwipeTableViewCellDelegate{
             var textField = UITextField()
             alert.addTextField(configurationHandler: { (alertTextField) in
                 textField = alertTextField
-                textField.placeholder = self.setMap[indexPath.row].setName
+                textField.placeholder = self.setArray![indexPath.row].title
                 textField.delegate = self
             })
             self.saveAction = UIAlertAction(title: "Save", style: .default, handler: { (act) in
-                self.setMap[indexPath.row].setName = textField.text!
-                self.saveSets()
-                self.fetchData()
+                if let set = self.setArray?[indexPath.row] {
+                    do{
+                        try self.realm.write {
+                            set.title = textField.text!
+                        }
+                    } catch{
+                        print("Error renaming set")
+                    }
+                }
                 self.SetTableView.reloadData()
             })
             self.saveAction.isEnabled = false
@@ -165,29 +197,15 @@ extension SetController : SwipeTableViewCellDelegate{
         
         renameAction.image = UIImage(named: "rename-icon")
         
-        return [deleteAction, renameAction]
+        let setTime = SwipeAction(style: .default, title: "Timer") { (action : SwipeAction, indexPath : IndexPath) in
+            self.selectedSettingCell = indexPath
+            self.performSegue(withIdentifier: "OpenSetSettings", sender: self)
+        }
+        setTime.image = UIImage(named: "settings-icon")
+        return [deleteAction, renameAction, setTime]
     }
 }
 
-//Mark: - CardsController Delegate Methods (Saving cards)
-extension SetController : CardsControllerDelegate{
-    func createAndSaveCards(title: String, cards: [Card]) {
-        let newCardSet = CardSet(setName: title, cards: cards)
-        print(title)
-        setMap.append(newCardSet)
-        SetTableView.reloadData()
-        saveSets()
-    }
-    
-    func saveCards(cards: [Card], setId: Int?){
-        setMap[setId!].cards = cards
-        saveSets()
-    }
-    
-    func removeCard(indexPath: IndexPath, setId: Int?){
-        saveSets()
-    }
-}
 
 extension SetController : UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
@@ -202,5 +220,23 @@ extension SetController : UITextFieldDelegate{
             saveAction.isEnabled = false
         }
         return true
+    }
+}
+
+extension SetController : UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        setArray = setArray?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated")
+        SetTableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0{
+            loadData()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+            
+        }
     }
 }

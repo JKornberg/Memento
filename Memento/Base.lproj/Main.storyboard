@@ -103,11 +103,54 @@
                     <connections>
                         <outlet property="SetButton" destination="T7m-cJ-2Va" id="vTG-4F-MRa"/>
                         <segue destination="vBG-i3-3jy" kind="show" identifier="toSetView" id="zU0-cm-Pas"/>
+                        <segue destination="Ji1-dj-Y7L" kind="presentation" identifier="RequestNotifications" modalTransitionStyle="coverVertical" id="mMW-B4-ucK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="994" y="60"/>
+            <point key="canvasLocation" x="958" y="-47"/>
+        </scene>
+        <!--Enable Push Controller-->
+        <scene sceneID="B5m-nC-tKh">
+            <objects>
+                <viewController id="Ji1-dj-Y7L" customClass="EnablePushController" customModule="Memento" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rup-t2-DXy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkT-kg-vlU">
+                                <rect key="frame" x="164" y="318" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="goToSettingsAction:" destination="Ji1-dj-Y7L" eventType="touchUpInside" id="8g5-7B-yL0"/>
+                                </connections>
+                            </button>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close-icon" translatesAutoresizingMaskIntoConstraints="NO" id="ZEi-fR-ZK9">
+                                <rect key="frame" x="0.0" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="LNB-5a-bF3"/>
+                                    <constraint firstAttribute="width" constant="30" id="sR3-Lq-pMQ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pkT-kg-vlU" firstAttribute="top" secondItem="SjT-C6-zX7" secondAttribute="top" constant="298" id="GOK-3j-jp0"/>
+                            <constraint firstItem="SjT-C6-zX7" firstAttribute="trailing" secondItem="pkT-kg-vlU" secondAttribute="trailing" constant="165" id="OPs-rG-GSD"/>
+                            <constraint firstItem="ZEi-fR-ZK9" firstAttribute="top" secondItem="SjT-C6-zX7" secondAttribute="top" id="asV-4n-NIo"/>
+                            <constraint firstItem="ZEi-fR-ZK9" firstAttribute="leading" secondItem="SjT-C6-zX7" secondAttribute="leading" id="cVO-PM-Ovn"/>
+                            <constraint firstItem="SjT-C6-zX7" firstAttribute="bottom" secondItem="pkT-kg-vlU" secondAttribute="bottom" constant="319" id="ikO-Yg-kdc"/>
+                            <constraint firstItem="pkT-kg-vlU" firstAttribute="leading" secondItem="SjT-C6-zX7" secondAttribute="leading" constant="164" id="rCO-QF-utQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SjT-C6-zX7"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="ZEi-fR-ZK9" id="S70-ol-ucy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6pv-pw-dIp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="957.60000000000002" y="662.51874062968523"/>
         </scene>
         <!--Set Controller-->
         <scene sceneID="JxX-i5-d78">
@@ -185,13 +228,75 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="SetTableView" destination="Ekh-oE-CFX" id="NLP-sH-6x2"/>
+                        <outlet property="searchBar" destination="CFz-LK-4Tz" id="6cm-SI-eei"/>
                         <outlet property="sortButton" destination="o2C-UB-6jV" id="zto-4g-tmE"/>
                         <segue destination="b9f-Lf-hL1" kind="show" identifier="OpenCardsSet" id="vfN-Dc-EcB"/>
+                        <segue destination="nb6-ng-iTB" kind="presentation" identifier="OpenSetSettings" id="h1O-Mr-xqu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4JV-RW-4xR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1929" y="-36"/>
+        </scene>
+        <!--Set Settings Controller-->
+        <scene sceneID="H9b-Hl-pIs">
+            <objects>
+                <viewController id="nb6-ng-iTB" customClass="SetSettingsController" customModule="Memento" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gss-Ct-9rw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close-icon" translatesAutoresizingMaskIntoConstraints="NO" id="90p-m6-iSb">
+                                <rect key="frame" x="0.0" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Uhj-p3-4jO"/>
+                                    <constraint firstAttribute="width" constant="30" id="hmJ-yd-vO8"/>
+                                </constraints>
+                            </imageView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="0Fp-1c-O4N">
+                                <rect key="frame" x="0.0" y="50" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="565113528.63105202">
+                                    <!--2018-11-28 15:58:48 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="durationChanged:" destination="nb6-ng-iTB" eventType="valueChanged" id="uNa-Ur-4Zu"/>
+                                </connections>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZT-Xm-6iW">
+                                <rect key="frame" x="112.5" y="276" width="150" height="41"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="2Kz-Nv-EBG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                <state key="normal" title="Save and Exit">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveAction:" destination="nb6-ng-iTB" eventType="touchUpInside" id="6j0-Uj-x6p"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="90p-m6-iSb" firstAttribute="leading" secondItem="NUi-VS-uVg" secondAttribute="leading" id="OLy-GM-Vvd"/>
+                            <constraint firstItem="ZZT-Xm-6iW" firstAttribute="top" secondItem="0Fp-1c-O4N" secondAttribute="bottom" constant="10" id="Q7m-xw-t0y"/>
+                            <constraint firstItem="0Fp-1c-O4N" firstAttribute="leading" secondItem="NUi-VS-uVg" secondAttribute="leading" id="ZhL-E7-eL4"/>
+                            <constraint firstItem="0Fp-1c-O4N" firstAttribute="top" secondItem="90p-m6-iSb" secondAttribute="bottom" id="eI9-j3-YNb"/>
+                            <constraint firstAttribute="trailing" secondItem="0Fp-1c-O4N" secondAttribute="trailing" id="hYl-cs-ulL"/>
+                            <constraint firstItem="ZZT-Xm-6iW" firstAttribute="centerX" secondItem="Gss-Ct-9rw" secondAttribute="centerX" id="kQI-hl-1Ve"/>
+                            <constraint firstItem="90p-m6-iSb" firstAttribute="top" secondItem="NUi-VS-uVg" secondAttribute="top" id="q5B-MO-ro8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NUi-VS-uVg"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="90p-m6-iSb" id="W2U-Dj-n0T"/>
+                        <outlet property="durationPicker" destination="0Fp-1c-O4N" id="TFp-X1-hAZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R38-XG-9Qy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1928.8" y="678.71064467766121"/>
         </scene>
         <!--Cards Controller-->
         <scene sceneID="ZgZ-4w-jAL">
@@ -246,6 +351,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="close-icon" width="75" height="75"/>
         <image name="menu-icon" width="75" height="75"/>
     </resources>
 </document>

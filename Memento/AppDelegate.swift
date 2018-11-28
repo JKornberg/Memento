@@ -7,16 +7,49 @@
 //
 
 import UIKit
-
+import CoreData
+import RealmSwift
+import UserNotifications
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        print(Realm.Configuration.defaultConfiguration.fileURL)
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge])
+        { (granted, error) in
+            print("granted: \(granted)")
+            if error != nil{
+                print("Unsuccess")
+            }
+        }
+        let knownAction = UNNotificationAction(identifier: "knownAction", title: "I Know It", options: [])
+        let viewAction = UNNotificationAction(identifier: "viewAction", title: "Show Answer", options: [.foreground])
+        let category = UNNotificationCategory(identifier: "questionCategory", actions: [knownAction, viewAction], intentIdentifiers: [], options: [])
         // Override point for customization after application launch.
         return true
+    }
+    
+    
+    func scheduleNotifications(question: String){
+        let defaults = UserDefaults.standard
+        let timeIntervalSetting = defaults.double(forKey: "timeInterval")
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeIntervalSetting, repeats: true)
+        let content = UNMutableNotificationContent()
+        content.title = "Memento Quiz"
+        content.body = question
+        content.sound = UNNotificationSound.default
+        content.categoryIdentifier = "questionCategory"
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        let request = UNNotificationRequest(identifier: "questionCategory", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {print("Error adding notification: \(error)")}
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -39,8 +72,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // Saves changes in the application's managed object context before the application terminates.
+        NotificationCenter.default.post(name: .terminationNotificationKey, object: nil)
     }
+    
+    // MARK: - Core Data stack
+    
+   
+    
+    // MARK: - Core Data Saving support
+    
 
-
+    
 }
-

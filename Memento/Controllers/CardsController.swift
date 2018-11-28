@@ -8,31 +8,31 @@
 
 import UIKit
 import SwipeCellKit
-protocol CardsControllerDelegate{
-    func createAndSaveCards(title: String, cards: [Card])
-    func saveCards(cards: [Card], setId: Int?)
-    func removeCard(indexPath: IndexPath, setId: Int?)
-}
+import RealmSwift
 
 class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate  {
-    
-    var cards : [Card] = [Card]()
-    var setName : String?
-    var setId : Int?
+    let realm = try! Realm()
+    var cardArray : List<Card>?
+    var changedCards = [IndexPath]()
     var saveAction : UIAlertAction!
-    var cardsToUpdate = [IndexPath]()
-    var cardsToRemove = [IndexPath]()
     @IBOutlet weak var tableView: UITableView!
-    var delegate : CardsControllerDelegate?
+    var selectedSet : Set? {
+        didSet{
+            loadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name.myNotificationKey, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveTerminate(_:)), name: Notification.Name.terminationNotificationKey, object: nil)
+        loadData()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "CardCell", bundle: nil), forCellReuseIdentifier: "customCardCell")
         initToolbar()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.donePressed(_:)))
         self.navigationItem.rightBarButtonItem = doneButton
-        self.navigationItem.title = setName
         configureTableView()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -61,58 +61,65 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     func configureTableView(){
         tableView.rowHeight = 200
     }
-    @IBAction func addCard(_ barItem: UIBarButtonItem){
-        refreshArray()
-        cards.append(Card(side1: "", side2: "", cardId: cards.count))
-        tableView.reloadData()
+    @objc func didReceiveTerminate(_ notification : Notification){
+        saveCards()
     }
     
-    func refreshArray()
-    {
-        for path in cardsToUpdate{
-            let cell = tableView.cellForRow(at: IndexPath(row: path.row, section: 0)) as! CardCell
-            if let text = cell.side1.text {
-                cards[path.row].side1 = text
+    @IBAction func addCard(_ barItem: UIBarButtonItem){
+        saveCards()
+        do{
+            try realm.write{
+                let newCard = Card()
+                newCard.side1 = ""
+                newCard.side2 = ""
+                selectedSet?.cards.append(newCard)
+                tableView.reloadData()
             }
-            if let text = cell.side2.text {
-                cards[path.row].side2 = text
+        } catch{
+            print("Error adding card: \(error)")
+        }
+    }
+    
+    func loadData(){
+        cardArray = selectedSet?.cards
+        if cardArray?.count == 0 {
+            //set is empty
+            do{
+                try realm.write{
+                    let newCard = Card()
+                    newCard.side1 = ""
+                    newCard.side2 = ""
+                    selectedSet?.cards.append(newCard)
+                    print("here")
+                }
+            } catch{
+                print("Error adding card: \(error)")
             }
         }
-        cardsToUpdate = []
     }
+    
+    func saveCards(){
+        for path in changedCards{
+            if let card = cardArray?[path.row]{
+                do{
+                    try realm.write{
+                        let cell = tableView.cellForRow(at: path) as! CardCell
+                        card.side1 = cell.side1.text ?? ""
+                        card.side2 = cell.side2.text ?? ""
+                    }
+                } catch{
+                    print("Error saving cards: \(error)")
+                }
+            }
+        }
+        changedCards = []
+    }
+
     
     @IBAction func donePressed(_ barItem: UIBarButtonItem)
     {
-        refreshArray()
-        if setId != -1{
-            self.delegate?.saveCards(cards: self.cards, setId: setId)
-            self.navigationController?.popViewController(animated: true)
-        }
-        else{
-            var textField = UITextField()
-            let alert  = UIAlertController(title: "Would you like to save this set of cards?", message: "", preferredStyle: .alert)
-            alert.addTextField { (alertTextField) in
-                alertTextField.placeholder = "Enter set name"
-                textField = alertTextField
-                textField.delegate = self
-                textField.tag = 2
-            }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
-                //
-            }
-            
-            //Set up Save Button and add to alert
-            saveAction = UIAlertAction(title: "Save", style: .default) { (UIAlertAction) in
-               // textField.layer.borderColor = UIColor.red.cgColor
-                self.delegate?.createAndSaveCards(title: textField.text!, cards: self.cards)
-                self.navigationController?.popViewController(animated: true)
-            }
-            saveAction.isEnabled = false
-            alert.addAction(cancelAction)
-            alert.addAction(saveAction)
-
-            present(alert, animated: true, completion: nil)
-        }
+        saveCards()
+        navigationController?.popViewController(animated: true)
     }
     // Textfield delegate method for observing the text change
     
@@ -125,7 +132,7 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
                 saveAction.isEnabled = true
             }
             else{
-                saveAction.isEnabled = false
+                saveAction.isEnabled = false    
             }
         }
         return true
@@ -137,14 +144,22 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return cards.count
+        return cardArray?.count ?? 1
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCardCell", for: indexPath) as! CardCell
-        cell.side1.text = cards[indexPath.row].side1
-        cell.side2.text = cards[indexPath.row].side2
+        if let card = cardArray?[indexPath.row]{
+            cell.side1.text = card.side1
+            cell.side2.text = card.side2
+        }
+        else{
+            cell.side1.text = ""
+            cell.side2.text = ""
+        }
+
         cell.delegate = self
         cell.cardDelegate = self
         createShadow(cell: cell)
@@ -168,11 +183,18 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
 }
-extension CardsController: CardCellDelegate{
+
+
+extension Notification.Name{
+    public static let terminationNotificationKey = Notification.Name(rawValue: "terminationNotificationKey")
+}
+
+extension CardsController : CardCellDelegate{
     func appendToChanged(indexPath: IndexPath) {
-        cardsToUpdate.append(indexPath)
+        changedCards.append(indexPath)
     }
 }
+
 
 extension CardsController : SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
@@ -181,10 +203,19 @@ extension CardsController : SwipeTableViewCellDelegate {
         //Delete button
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             // handle action by updating model with deletions
-            self.refreshArray()
-            self.cards.remove(at: indexPath.row)
+            //self.cardArray.remove(at: indexPath.row)
+            self.saveCards()
+            if let card = self.cardArray?[indexPath.row]{
+                do {
+                    try self.realm.write{
+                        self.realm.delete(card)
+                    }
+                } catch {
+                    print("Error deleting card")
+                }
+            }
+
             self.tableView.reloadData()
-            self.delegate?.removeCard(indexPath: indexPath, setId: self.setId)
          }
         deleteAction.image = UIImage(named: "delete-icon")
         return [deleteAction]

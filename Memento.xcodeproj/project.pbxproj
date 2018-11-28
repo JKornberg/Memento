@@ -8,14 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		3EAECEBC682B4D718FACF849 /* Pods_Memento.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8307A466ED0EE1FCCE500F /* Pods_Memento.framework */; };
-		463391A9217D0DD2001B8319 /* CardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463391A8217D0DD2001B8319 /* CardSet.swift */; };
+		460C484921A9AE220016699D /* EnablePushController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460C484821A9AE220016699D /* EnablePushController.swift */; };
 		4642B92421821CA00039732D /* CardsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4642B92321821CA00039732D /* CardsController.swift */; };
-		4642B92921821D6D0039732D /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4642B92821821D6D0039732D /* Card.swift */; };
 		46552982218BC14000DF1973 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46552980218BC14000DF1973 /* CardCell.swift */; };
 		46552983218BC14000DF1973 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46552981218BC14000DF1973 /* CardCell.xib */; };
+		4688969721A4C88700B08509 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688969621A4C88700B08509 /* Card.swift */; };
+		4688969921A4C89600B08509 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688969821A4C89600B08509 /* Set.swift */; };
 		469E7A32217B7F19009E9D7D /* SetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469E7A31217B7F19009E9D7D /* SetController.swift */; };
 		46B92529217D049B0046E228 /* SetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B92527217D049B0046E228 /* SetCell.swift */; };
 		46B9252A217D049B0046E228 /* SetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46B92528217D049B0046E228 /* SetCell.xib */; };
+		46D1B17021AEF20B007F1A17 /* SetSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D1B16F21AEF20B007F1A17 /* SetSettingsController.swift */; };
 		46DC3D03217A5698000D22C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC3D02217A5698000D22C4 /* AppDelegate.swift */; };
 		46DC3D05217A5698000D22C4 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC3D04217A5698000D22C4 /* HomeController.swift */; };
 		46DC3D08217A5698000D22C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46DC3D06217A5698000D22C4 /* Main.storyboard */; };
@@ -25,14 +27,16 @@
 
 /* Begin PBXFileReference section */
 		1F8307A466ED0EE1FCCE500F /* Pods_Memento.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memento.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		463391A8217D0DD2001B8319 /* CardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSet.swift; sourceTree = "<group>"; };
+		460C484821A9AE220016699D /* EnablePushController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnablePushController.swift; sourceTree = "<group>"; };
 		4642B92321821CA00039732D /* CardsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsController.swift; sourceTree = "<group>"; };
-		4642B92821821D6D0039732D /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		46552980218BC14000DF1973 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		46552981218BC14000DF1973 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
+		4688969621A4C88700B08509 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		4688969821A4C89600B08509 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		469E7A31217B7F19009E9D7D /* SetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetController.swift; sourceTree = "<group>"; };
 		46B92527217D049B0046E228 /* SetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCell.swift; sourceTree = "<group>"; };
 		46B92528217D049B0046E228 /* SetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetCell.xib; sourceTree = "<group>"; };
+		46D1B16F21AEF20B007F1A17 /* SetSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSettingsController.swift; sourceTree = "<group>"; };
 		46DC3CFF217A5698000D22C4 /* Memento.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memento.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DC3D02217A5698000D22C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46DC3D04217A5698000D22C4 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -65,13 +69,13 @@
 			path = CardCell;
 			sourceTree = "<group>";
 		};
-		4642B92721821D5A0039732D /* Classes */ = {
+		4642B92721821D5A0039732D /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
-				463391A8217D0DD2001B8319 /* CardSet.swift */,
-				4642B92821821D6D0039732D /* Card.swift */,
+				4688969621A4C88700B08509 /* Card.swift */,
+				4688969821A4C89600B08509 /* Set.swift */,
 			);
-			path = Classes;
+			path = DataModels;
 			sourceTree = "<group>";
 		};
 		469E7A30217B7EA0009E9D7D /* Controllers */ = {
@@ -80,6 +84,8 @@
 				46DC3D04217A5698000D22C4 /* HomeController.swift */,
 				469E7A31217B7F19009E9D7D /* SetController.swift */,
 				4642B92321821CA00039732D /* CardsController.swift */,
+				460C484821A9AE220016699D /* EnablePushController.swift */,
+				46D1B16F21AEF20B007F1A17 /* SetSettingsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -116,7 +122,7 @@
 			children = (
 				46B9252B217D06AB0046E228 /* SetCell */,
 				4642B91E218211210039732D /* CardCell */,
-				4642B92721821D5A0039732D /* Classes */,
+				4642B92721821D5A0039732D /* DataModels */,
 				469E7A30217B7EA0009E9D7D /* Controllers */,
 				46DC3D02217A5698000D22C4 /* AppDelegate.swift */,
 				46DC3D06217A5698000D22C4 /* Main.storyboard */,
@@ -248,6 +254,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Memento/Pods-Memento-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CheckMarkView/CheckMarkView.framework",
 				"${BUILT_PRODUCTS_DIR}/RandomUtils/RandomUtils.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -256,6 +264,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CheckMarkView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RandomUtils.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,14 +280,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				460C484921A9AE220016699D /* EnablePushController.swift in Sources */,
 				4642B92421821CA00039732D /* CardsController.swift in Sources */,
 				46B92529217D049B0046E228 /* SetCell.swift in Sources */,
-				463391A9217D0DD2001B8319 /* CardSet.swift in Sources */,
-				4642B92921821D6D0039732D /* Card.swift in Sources */,
+				46D1B17021AEF20B007F1A17 /* SetSettingsController.swift in Sources */,
 				46DC3D05217A5698000D22C4 /* HomeController.swift in Sources */,
 				46DC3D03217A5698000D22C4 /* AppDelegate.swift in Sources */,
 				469E7A32217B7F19009E9D7D /* SetController.swift in Sources */,
 				46552982218BC14000DF1973 /* CardCell.swift in Sources */,
+				4688969721A4C88700B08509 /* Card.swift in Sources */,
+				4688969921A4C89600B08509 /* Set.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

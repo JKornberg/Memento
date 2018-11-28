@@ -44,7 +44,6 @@ class CardCell: SwipeTableViewCell, UITextFieldDelegate {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-
         side1.setBottomBorder()
         side2.setBottomBorder()
         side1.delegate = self

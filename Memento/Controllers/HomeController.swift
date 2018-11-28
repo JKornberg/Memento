@@ -7,15 +7,36 @@
 //
 
 import UIKit
-
+import UserNotifications
 class HomeController: UIViewController {
 
     @IBOutlet weak var SetButton: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        registerDefaults()
+        checkNotifications()
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapPiece(_:)))
-	        SetButton.addGestureRecognizer(tap)
+        SetButton.addGestureRecognizer(tap)
+    }
+    
+    func registerDefaults(){
+        let defaults = UserDefaults.standard
+        defaults.register(defaults: ["questionInterval": 3600])
+    }
+    
+    func checkNotifications(){
+        print("CHECKING NOTIFICATIONS")
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings(){ (settings) in
+            print(settings.authorizationStatus)
+            if settings.authorizationStatus != .authorized || settings.alertSetting != .enabled || settings.lockScreenSetting != .enabled{
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "RequestNotifications", sender: self)
+
+                }
+            }
+        }
     }
     
     @IBAction func tapPiece(_ gestureRecognizer : UITapGestureRecognizer ) {
