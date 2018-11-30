@@ -8,7 +8,7 @@
 
 import Foundation
 import RealmSwift
-class Set : Object {
+class cardSet : Object {
     @objc dynamic var title : String = ""
     @objc dynamic var isActive : Bool = false
     @objc dynamic var dateCreated : Date?

@@ -14,7 +14,7 @@ class SetSettingsController: UIViewController {
     @IBOutlet weak var durationPicker: UIDatePicker!
     let realm = try! Realm()
 
-    var selectedSet : Set?
+    var selectedSet : cardSet?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

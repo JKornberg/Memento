@@ -10,6 +10,7 @@ import UIKit
 import SwipeCellKit
 import CoreData
 import RealmSwift
+import UserNotifications
 class SetController: UIViewController, UITableViewDelegate, UITableViewDataSource, CellDelegate {
 
     
@@ -19,12 +20,16 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var sortButton: UIButton!
     var selectedCardSet : Int = -1
-    var setArray: Results<Set>?
+    var setArray: Results<cardSet>?
     var saveAction : UIAlertAction!
     var selectedSettingCell : IndexPath?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var SetTableView: UITableView!
     
     @IBAction func sortSets(_ sender: Any) {
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
+            print(requests.count)
+        }
     }
     
     override func viewDidLoad() {
@@ -48,6 +53,12 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
             print("error saving toggle")
         }
         SetTableView.reloadData()
+        let set = setArray![setID]
+        if set.isActive{
+            appDelegate.scheduleNotifications(set: set)
+        } else {
+            appDelegate.cancelNotifications(set: set)
+        }
         /*
         setArray[setID].isActive = val
         print("set \(setID) is \(val)")
@@ -77,7 +88,7 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     
     //TOPIC: Manage Data
-    func save(set: Set){
+    func save(set: cardSet){
         do {
             try realm.write{
                 realm.add(set)
@@ -89,7 +100,7 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func loadData(){
-        setArray = realm.objects(Set.self).sorted(byKeyPath: "dateCreated")
+        setArray = realm.objects(cardSet.self).sorted(byKeyPath: "dateCreated")
         SetTableView.reloadData()
     }
 
@@ -102,7 +113,7 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
             textField.delegate = self
         }
         saveAction = UIAlertAction(title: "Create", style: .default, handler: { (act) in
-            let newSet = Set()
+            let newSet = cardSet()
             newSet.title = textField.text!
             newSet.dateCreated = Date()
             self.save(set: newSet)

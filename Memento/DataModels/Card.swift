@@ -11,5 +11,5 @@ import RealmSwift
 class Card : Object{
     @objc dynamic var side1: String = ""
     @objc dynamic var side2: String = ""
-    var parentSet = LinkingObjects(fromType: Set.self, property: "cards")
+    var parentSet = LinkingObjects(fromType: cardSet.self, property: "cards")
 }

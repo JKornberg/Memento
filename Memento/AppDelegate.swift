@@ -31,27 +31,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let knownAction = UNNotificationAction(identifier: "knownAction", title: "I Know It", options: [])
         let viewAction = UNNotificationAction(identifier: "viewAction", title: "Show Answer", options: [.foreground])
         let category = UNNotificationCategory(identifier: "questionCategory", actions: [knownAction, viewAction], intentIdentifiers: [], options: [])
+        center.setNotificationCategories([category])
         // Override point for customization after application launch.
         return true
     }
     
     
-    func scheduleNotifications(question: String){
+    func scheduleNotifications(set : cardSet){
         let defaults = UserDefaults.standard
         let timeIntervalSetting = defaults.double(forKey: "timeInterval")
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeIntervalSetting, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let content = UNMutableNotificationContent()
         content.title = "Memento Quiz"
-        content.body = question
+        let cardInt = Int.random(in: 0..<set.cards.count)
+        content.body = set.cards[cardInt].side1
         content.sound = UNNotificationSound.default
         content.categoryIdentifier = "questionCategory"
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        let request = UNNotificationRequest(identifier: "questionCategory", content: content, trigger: trigger)
+        let identifier = String(set.dateCreated.hashValue)
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+        print("Created Notification: \(identifier)")
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request) { (error) in
             if let error = error {print("Error adding notification: \(error)")}
         }
     }
 
+    func cancelNotifications(set: cardSet){
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [String(set.dateCreated.hashValue)])
+        print("Deleted Notification: \(String(set.dateCreated.hashValue))")
+
+    }
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

@@ -13,7 +13,7 @@
 		46552982218BC14000DF1973 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46552980218BC14000DF1973 /* CardCell.swift */; };
 		46552983218BC14000DF1973 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46552981218BC14000DF1973 /* CardCell.xib */; };
 		4688969721A4C88700B08509 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688969621A4C88700B08509 /* Card.swift */; };
-		4688969921A4C89600B08509 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688969821A4C89600B08509 /* Set.swift */; };
+		4688969921A4C89600B08509 /* cardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688969821A4C89600B08509 /* cardSet.swift */; };
 		469E7A32217B7F19009E9D7D /* SetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469E7A31217B7F19009E9D7D /* SetController.swift */; };
 		46B92529217D049B0046E228 /* SetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B92527217D049B0046E228 /* SetCell.swift */; };
 		46B9252A217D049B0046E228 /* SetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46B92528217D049B0046E228 /* SetCell.xib */; };
@@ -32,7 +32,7 @@
 		46552980218BC14000DF1973 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		46552981218BC14000DF1973 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		4688969621A4C88700B08509 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		4688969821A4C89600B08509 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
+		4688969821A4C89600B08509 /* cardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cardSet.swift; sourceTree = "<group>"; };
 		469E7A31217B7F19009E9D7D /* SetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetController.swift; sourceTree = "<group>"; };
 		46B92527217D049B0046E228 /* SetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCell.swift; sourceTree = "<group>"; };
 		46B92528217D049B0046E228 /* SetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetCell.xib; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				4688969621A4C88700B08509 /* Card.swift */,
-				4688969821A4C89600B08509 /* Set.swift */,
+				4688969821A4C89600B08509 /* cardSet.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -289,7 +289,7 @@
 				469E7A32217B7F19009E9D7D /* SetController.swift in Sources */,
 				46552982218BC14000DF1973 /* CardCell.swift in Sources */,
 				4688969721A4C88700B08509 /* Card.swift in Sources */,
-				4688969921A4C89600B08509 /* Set.swift in Sources */,
+				4688969921A4C89600B08509 /* cardSet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

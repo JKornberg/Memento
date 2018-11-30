@@ -16,7 +16,7 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     var changedCards = [IndexPath]()
     var saveAction : UIAlertAction!
     @IBOutlet weak var tableView: UITableView!
-    var selectedSet : Set? {
+    var selectedSet : cardSet? {
         didSet{
             loadData()
         }
