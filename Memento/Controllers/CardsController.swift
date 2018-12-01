@@ -73,6 +73,8 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
                 newCard.side1 = ""
                 newCard.side2 = ""
                 selectedSet?.cards.append(newCard)
+                let max = (cardArray?.max(ofProperty: "id"))!+1
+                newCard.id = max
                 tableView.reloadData()
             }
         } catch{
@@ -89,6 +91,7 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
                     let newCard = Card()
                     newCard.side1 = ""
                     newCard.side2 = ""
+                    newCard.id = 1
                     selectedSet?.cards.append(newCard)
                     print("here")
                 }

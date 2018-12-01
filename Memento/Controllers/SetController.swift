@@ -35,7 +35,8 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        loadData()
+        //loadData()
+        setArray = appDelegate.setArray
         searchBar.delegate = self
         SetTableView.delegate = self
         SetTableView.dataSource = self
@@ -139,6 +140,7 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let dest = segue.destination as! SetSettingsController
             if let path = selectedSettingCell{
                 dest.selectedSet = setArray?[path.row]
+                dest.setController = self
             }
         }
     }
@@ -177,7 +179,7 @@ extension SetController : SwipeTableViewCellDelegate{
         }
         deleteAction.image = UIImage(named: "delete-icon")
         
-        let renameAction = SwipeAction(style: .default, title: "Rename"){ action, indexPath in
+     /*   let renameAction = SwipeAction(style: .default, title: "Rename"){ action, indexPath in
             let alert = UIAlertController(title: "Rename Set", message: "", preferredStyle: .alert)
             var textField = UITextField()
             alert.addTextField(configurationHandler: { (alertTextField) in
@@ -206,14 +208,14 @@ extension SetController : SwipeTableViewCellDelegate{
             self.present(alert, animated: true, completion: nil)
         }
         
-        renameAction.image = UIImage(named: "rename-icon")
+        renameAction.image = UIImage(named: "rename-icon") */
         
-        let setTime = SwipeAction(style: .default, title: "Timer") { (action : SwipeAction, indexPath : IndexPath) in
+        let setTime = SwipeAction(style: .default, title: "Settings") { (action : SwipeAction, indexPath : IndexPath) in
             self.selectedSettingCell = indexPath
             self.performSegue(withIdentifier: "OpenSetSettings", sender: self)
         }
         setTime.image = UIImage(named: "settings-icon")
-        return [deleteAction, renameAction, setTime]
+        return [deleteAction, setTime]
     }
 }
 

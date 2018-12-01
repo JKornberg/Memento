@@ -15,11 +15,12 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var setArray: Results<cardSet>?
+    let realm = try! Realm()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        print(Realm.Configuration.defaultConfiguration.fileURL)
+        print(Realm.Configuration.defaultConfiguration.fileURL ?? "Error getting file URL")
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound, .badge])
         { (granted, error) in
@@ -28,40 +29,105 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Unsuccess")
             }
         }
+        loadData()
+        //Setup actions and categories for notifications
         let knownAction = UNNotificationAction(identifier: "knownAction", title: "I Know It", options: [])
         let viewAction = UNNotificationAction(identifier: "viewAction", title: "Show Answer", options: [.foreground])
         let category = UNNotificationCategory(identifier: "questionCategory", actions: [knownAction, viewAction], intentIdentifiers: [], options: [])
         center.setNotificationCategories([category])
-        // Override point for customization after application launch.
+        center.delegate = self
         return true
+    }
+    
+    func loadData(){
+        setArray = realm.objects(cardSet.self).sorted(byKeyPath: "dateCreated")
     }
     
     
     func scheduleNotifications(set : cardSet){
+        //Set time interval to default if not set manually
         let defaults = UserDefaults.standard
-        let timeIntervalSetting = defaults.double(forKey: "timeInterval")
+        var timeIntervalSetting = set.duration.value
+        if timeIntervalSetting == 0 || timeIntervalSetting == nil  {
+            timeIntervalSetting = defaults.double(forKey: "timeInterval") }
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let content = UNMutableNotificationContent()
+        
+        //Setup card content
         content.title = "Memento Quiz"
-        let cardInt = Int.random(in: 0..<set.cards.count)
-        content.body = set.cards[cardInt].side1
+        let card = getWeightedRandom(set: set)
+        content.body = card.side1
         content.sound = UNNotificationSound.default
         content.categoryIdentifier = "questionCategory"
-        let identifier = String(set.dateCreated.hashValue)
+        let identifier = String(set.dateCreated.hashValue) + "&\(card.id)"
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
-        print("Created Notification: \(identifier)")
+        print("Created Notification with timer: \(String(describing: timeIntervalSetting))")
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request) { (error) in
             if let error = error {print("Error adding notification: \(error)")}
         }
     }
-
-    func cancelNotifications(set: cardSet){
-        let center = UNUserNotificationCenter.current()
-        center.removePendingNotificationRequests(withIdentifiers: [String(set.dateCreated.hashValue)])
-        print("Deleted Notification: \(String(set.dateCreated.hashValue))")
-
+    
+    func getWeightedRandom(set: cardSet) -> Card{
+        var totalWeight = 0
+        var selectedCard = Card()
+        for card in set.cards{
+            totalWeight += card.points
+        }
+        var randInt = Int.random(in: 0..<totalWeight)
+        for card in set.cards{
+            randInt -= card.points
+            if randInt <= 0{
+                selectedCard = card
+                break
+            }
+        }
+        return selectedCard
     }
+
+    //Cancels pending notifications when toggled off
+    func cancelNotifications(set: cardSet){
+        let hash = set.dateCreated.hashValue
+        let center = UNUserNotificationCenter.current()
+        center.getPendingNotificationRequests { (requests) in
+            for request in requests{
+                if request.identifier.split(separator: "&")[0] == String(hash){
+                    center.removePendingNotificationRequests(withIdentifiers: [request.identifier])
+                    print("Deleted Notification: \(request.identifier)")
+
+                    break
+                }
+            }
+        }
+    }
+    
+    func changePoints(_ card: Card, right : Bool){
+        var newPoints : Int = 5
+        var newStreak : Int = 0
+        if right{
+            switch card.streak{
+            case let x where x >= 5:
+                newPoints = card.points + 3
+            case 3...4:
+                newPoints = card.points + 2
+            default:
+                newPoints = card.points + 1
+            }
+            newStreak = card.streak + 1
+        } else{
+            newPoints = card.points - 1
+            newStreak = 0
+        }
+        do{
+            try realm.write {
+                card.points = newPoints
+                card.streak = newStreak
+            }
+        } catch{
+                print("Error changing card score: \(error)")
+        }
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -91,7 +157,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    
     
     // MARK: - Core Data Saving support
-    
+}
 
-    
+extension AppDelegate : UNUserNotificationCenterDelegate{
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let ids = response.notification.request.identifier.split(separator: "&")
+        let setId = ids[0]
+        let cardId = ids[1]
+        var selectedSet : cardSet?
+        for set in setArray!{
+            if String(set.dateCreated.hashValue) == setId{
+                selectedSet = set
+                break
+            }
+        }
+        guard let set = selectedSet else{return}
+        var selectedCard : Card?
+        for card in set.cards{
+            if card.id == Int(cardId){
+                selectedCard = card
+            }
+        }
+        guard let card = selectedCard else {return}
+        response.actionIdentifier == "knownAction" ? changePoints(card, right: true) : changePoints(card, right: false)
+        completionHandler()
+    }
 }

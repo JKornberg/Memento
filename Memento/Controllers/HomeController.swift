@@ -22,7 +22,7 @@ class HomeController: UIViewController {
     
     func registerDefaults(){
         let defaults = UserDefaults.standard
-        defaults.register(defaults: ["questionInterval": 3600])
+        defaults.register(defaults: ["timeInterval": 3600])
     }
     
     func checkNotifications(){

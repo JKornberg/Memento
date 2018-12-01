@@ -12,6 +12,8 @@
 		4642B92421821CA00039732D /* CardsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4642B92321821CA00039732D /* CardsController.swift */; };
 		46552982218BC14000DF1973 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46552980218BC14000DF1973 /* CardCell.swift */; };
 		46552983218BC14000DF1973 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46552981218BC14000DF1973 /* CardCell.xib */; };
+		4657B45A21B18CFF007792BC /* PresentCard in Resources */ = {isa = PBXBuildFile; fileRef = 4657B45921B18CFF007792BC /* PresentCard */; };
+		4657B45C21B19DFD007792BC /* PresentCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4657B45B21B19DFD007792BC /* PresentCardController.swift */; };
 		4688969721A4C88700B08509 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688969621A4C88700B08509 /* Card.swift */; };
 		4688969921A4C89600B08509 /* cardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688969821A4C89600B08509 /* cardSet.swift */; };
 		469E7A32217B7F19009E9D7D /* SetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469E7A31217B7F19009E9D7D /* SetController.swift */; };
@@ -31,6 +33,8 @@
 		4642B92321821CA00039732D /* CardsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsController.swift; sourceTree = "<group>"; };
 		46552980218BC14000DF1973 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		46552981218BC14000DF1973 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
+		4657B45921B18CFF007792BC /* PresentCard */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PresentCard; path = Memento/PresentCard; sourceTree = SOURCE_ROOT; };
+		4657B45B21B19DFD007792BC /* PresentCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentCardController.swift; sourceTree = "<group>"; };
 		4688969621A4C88700B08509 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		4688969821A4C89600B08509 /* cardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cardSet.swift; sourceTree = "<group>"; };
 		469E7A31217B7F19009E9D7D /* SetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46415C4C21B315D500EAB248 /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
 		4642B91E218211210039732D /* CardCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +97,7 @@
 				4642B92321821CA00039732D /* CardsController.swift */,
 				460C484821A9AE220016699D /* EnablePushController.swift */,
 				46D1B16F21AEF20B007F1A17 /* SetSettingsController.swift */,
+				4657B45B21B19DFD007792BC /* PresentCardController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -120,9 +132,11 @@
 		46DC3D01217A5698000D22C4 /* Memento */ = {
 			isa = PBXGroup;
 			children = (
+				4657B45921B18CFF007792BC /* PresentCard */,
 				46B9252B217D06AB0046E228 /* SetCell */,
 				4642B91E218211210039732D /* CardCell */,
 				4642B92721821D5A0039732D /* DataModels */,
+				46415C4C21B315D500EAB248 /* Custom Classes */,
 				469E7A30217B7EA0009E9D7D /* Controllers */,
 				46DC3D02217A5698000D22C4 /* AppDelegate.swift */,
 				46DC3D06217A5698000D22C4 /* Main.storyboard */,
@@ -212,6 +226,7 @@
 			files = (
 				46B9252A217D049B0046E228 /* SetCell.xib in Resources */,
 				46DC3D0D217A5699000D22C4 /* LaunchScreen.storyboard in Resources */,
+				4657B45A21B18CFF007792BC /* PresentCard in Resources */,
 				46552983218BC14000DF1973 /* CardCell.xib in Resources */,
 				46DC3D0A217A5699000D22C4 /* Assets.xcassets in Resources */,
 				46DC3D08217A5698000D22C4 /* Main.storyboard in Resources */,
@@ -290,6 +305,7 @@
 				46552982218BC14000DF1973 /* CardCell.swift in Sources */,
 				4688969721A4C88700B08509 /* Card.swift in Sources */,
 				4688969921A4C89600B08509 /* cardSet.swift in Sources */,
+				4657B45C21B19DFD007792BC /* PresentCardController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
