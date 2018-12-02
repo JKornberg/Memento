@@ -17,7 +17,7 @@ class SetCell: SwipeTableViewCell {
     @IBOutlet weak var CellSuperView: UIView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var activeButton: UIButton!
-    var checkDelegate : CellDelegate? = nil
+    var cellDelegate : CellDelegate? = nil
     var setID = Int()
     var setName : String = ""
     var checked : Bool = false
@@ -41,18 +41,20 @@ class SetCell: SwipeTableViewCell {
         activeButton.setImage(UIImage(named: "inactiveNotification-icon"), for: .normal)
     }
     @IBAction func toggleActive(_ sender: Any) {
-        checkDelegate?.toggleSet(setID: setID)
+        cellDelegate?.toggleSet(setID: setID)
         setStyle()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         setStyle()
+
         /*
         checkView.translatesAutoresizingMaskIntoConstraints = false
         checkView.widthAnchor.constraint(equalToConstant: 60).isActive = true
         checkView.heightAnchor.constraint(equalToConstant: 60).isActive = true */
     }
+
 
     
     

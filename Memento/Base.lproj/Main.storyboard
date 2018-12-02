@@ -230,16 +230,17 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="SetTableView" destination="Ekh-oE-CFX" id="NLP-sH-6x2"/>
+                        <outlet property="cardSetTableView" destination="Ekh-oE-CFX" id="NLP-sH-6x2"/>
                         <outlet property="searchBar" destination="CFz-LK-4Tz" id="6cm-SI-eei"/>
                         <outlet property="sortButton" destination="o2C-UB-6jV" id="zto-4g-tmE"/>
                         <segue destination="b9f-Lf-hL1" kind="show" identifier="OpenCardsSet" id="vfN-Dc-EcB"/>
                         <segue destination="nb6-ng-iTB" kind="presentation" identifier="OpenSetSettings" id="h1O-Mr-xqu"/>
+                        <segue destination="5Tg-wL-AgS" kind="show" identifier="PresentCard" id="kHT-sh-kyq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4JV-RW-4xR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1929" y="-47"/>
+            <point key="canvasLocation" x="1897" y="24"/>
         </scene>
         <!--Set Settings Controller-->
         <scene sceneID="H9b-Hl-pIs">

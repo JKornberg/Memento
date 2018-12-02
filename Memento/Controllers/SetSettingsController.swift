@@ -105,7 +105,7 @@ class SetSettingsController: UIViewController {
                 print("Error changing settings: \(error)")
             }
         }
-        setController?.SetTableView.reloadData()
+        setController?.cardSetTableView.reloadData()
         dismiss(animated: true) {
             
         }

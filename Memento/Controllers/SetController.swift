@@ -19,12 +19,12 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var sortButton: UIButton!
-    var selectedCardSet : Int = -1
+    var selectedCardSet : cardSet?
     var setArray: Results<cardSet>?
     var saveAction : UIAlertAction!
     var selectedSettingCell : IndexPath?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    @IBOutlet weak var SetTableView: UITableView!
+    @IBOutlet weak var cardSetTableView: UITableView!
     
     @IBAction func sortSets(_ sender: Any) {
         UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
@@ -38,10 +38,10 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         //loadData()
         setArray = appDelegate.setArray
         searchBar.delegate = self
-        SetTableView.delegate = self
-        SetTableView.dataSource = self
-        SetTableView.register(UINib(nibName: "SetCell", bundle: nil), forCellReuseIdentifier: "customSetCell")
-        SetTableView.rowHeight = 80
+        cardSetTableView.delegate = self
+        cardSetTableView.dataSource = self
+        cardSetTableView.register(UINib(nibName: "SetCell", bundle: nil), forCellReuseIdentifier: "customSetCell")
+        cardSetTableView.rowHeight = 80
     }
     
     //TOPIC: - Delegate Functions
@@ -53,7 +53,7 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         } catch{
             print("error saving toggle")
         }
-        SetTableView.reloadData()
+        cardSetTableView.reloadData()
         let set = setArray![setID]
         if set.isActive{
             appDelegate.scheduleNotifications(set: set)
@@ -66,25 +66,40 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         saveSets() */
     }
     
+    func presentCard(set: cardSet){
+        selectedCardSet = set
+        performSegue(withIdentifier: "presentCard", sender: self)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return setArray?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let newCell = SetTableView.dequeueReusableCell(withIdentifier: "customSetCell", for: indexPath) as! SetCell
+        let newCell = cardSetTableView.dequeueReusableCell(withIdentifier: "customSetCell", for: indexPath) as! SetCell
         newCell.selectionStyle = .none
         newCell.delegate = self
         newCell.setID = indexPath.row
         newCell.title.text = setArray?[indexPath.row].title ?? "No sets added yet"
-        newCell.checkDelegate = self
+        newCell.cellDelegate = self
         newCell.checked = setArray?[indexPath.row].isActive ?? false
         return newCell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedCardSet = indexPath.row
-        performSegue(withIdentifier: "OpenCardsSet", sender: self)
-        tableView.deselectRow(at: indexPath, animated: true)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        let quizAction = UIAlertAction(title: "Quiz Me", style: .default) { (action) in
+            self.performSegue(withIdentifier: "PresentCard", sender: self)
+            self.cardSetTableView.deselectRow(at: indexPath, animated: true)
+
+        }
+        let editAction = UIAlertAction(title: "Edit Cards", style: .default) { (action) in
+            self.performSegue(withIdentifier: "OpenCardsSet", sender: self)
+            self.cardSetTableView.deselectRow(at: indexPath, animated: true)
+        }
+        alert.addAction(quizAction)
+        alert.addAction(editAction)
+        present(alert, animated: true)
     }
     
     
@@ -97,14 +112,13 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         } catch {
             print("Error saving context")
         }
-        SetTableView.reloadData()
+        cardSetTableView.reloadData()
     }
     
     func loadData(){
         setArray = realm.objects(cardSet.self).sorted(byKeyPath: "dateCreated")
-        SetTableView.reloadData()
+        cardSetTableView.reloadData()
     }
-
     
     @IBAction func addButtonPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Create New Set", message: "", preferredStyle: .alert)
@@ -118,7 +132,7 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
             newSet.title = textField.text!
             newSet.dateCreated = Date()
             self.save(set: newSet)
-            self.SetTableView.selectRow(at: IndexPath(row: self.setArray!.count - 1, section: 0), animated: false, scrollPosition: .top)
+            self.cardSetTableView.selectRow(at: IndexPath(row: self.setArray!.count - 1, section: 0), animated: false, scrollPosition: .top)
             self.performSegue(withIdentifier: "OpenCardsSet", sender: self)
         })
         saveAction.isEnabled = false
@@ -132,7 +146,7 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "OpenCardsSet"{
             let dest = segue.destination as! CardsController
-            if let indexPath = SetTableView.indexPathForSelectedRow {
+            if let indexPath = cardSetTableView.indexPathForSelectedRow {
                 print("got it")
                 dest.selectedSet = setArray?[indexPath.row]
             }
@@ -141,6 +155,11 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
             if let path = selectedSettingCell{
                 dest.selectedSet = setArray?[path.row]
                 dest.setController = self
+            }
+        } else if segue.identifier == "PresentCard"{
+            let dest = segue.destination as! PresentCardController
+            if let indexPath = cardSetTableView.indexPathForSelectedRow {
+                dest.card = setArray?[indexPath.row].cards[0]
             }
         }
     }
@@ -175,7 +194,7 @@ extension SetController : SwipeTableViewCellDelegate{
                     print("Error deleting set")
                 }
             }
-            self.SetTableView.reloadData()
+            self.cardSetTableView.reloadData()
         }
         deleteAction.image = UIImage(named: "delete-icon")
         
@@ -239,7 +258,7 @@ extension SetController : UITextFieldDelegate{
 extension SetController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         setArray = setArray?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated")
-        SetTableView.reloadData()
+        cardSetTableView.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
