@@ -10,14 +10,16 @@ import UIKit
 import UserNotifications
 class HomeController: UIViewController {
 
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var SetButton: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         registerDefaults()
-        checkNotifications()
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapPiece(_:)))
         SetButton.addGestureRecognizer(tap)
+        navigationController?.navigationBar.barStyle = .default
+        navigationController?.navigationBar.barTintColor = UIColor.flatMintDark
     }
     
     func registerDefaults(){
@@ -25,28 +27,10 @@ class HomeController: UIViewController {
         defaults.register(defaults: ["timeInterval": 3600])
     }
     
-    func checkNotifications(){
-        print("CHECKING NOTIFICATIONS")
-        let center = UNUserNotificationCenter.current()
-        center.getNotificationSettings(){ (settings) in
-            print(settings.authorizationStatus)
-            if settings.authorizationStatus != .authorized || settings.alertSetting != .enabled || settings.lockScreenSetting != .enabled{
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "RequestNotifications", sender: self)
-
-                }
-            }
-        }
-    }
-    
     @IBAction func tapPiece(_ gestureRecognizer : UITapGestureRecognizer ) {
         guard gestureRecognizer.view != nil else { return }
         if gestureRecognizer.state == .ended {      // Move the view down and to the right when tapped.
             performSegue(withIdentifier: "toSetView", sender: self)
         }}
-
-    
-
-
 }
 

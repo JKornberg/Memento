@@ -1,4 +1,7 @@
 PODS:
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
   - CheckMarkView (0.4.3)
   - RandomUtils (0.2.0)
   - Realm (3.11.1):
@@ -9,6 +12,7 @@ PODS:
   - SwipeCellKit (2.5.0)
 
 DEPENDENCIES:
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CheckMarkView
   - RandomUtils
   - RealmSwift
@@ -22,13 +26,23 @@ SPEC REPOS:
     - RealmSwift
     - SwipeCellKit
 
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
 SPEC CHECKSUMS:
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CheckMarkView: 8bcac176673ed40d05f220d335de92f6a2702404
   RandomUtils: 46619b94f7f72743475308981bca450459600fb7
   Realm: 037c5919b9ceb59d6beed5d3b031096856b119b3
   RealmSwift: c9580133e73ef40ed340401af2dbc9a5790dfea7
   SwipeCellKit: d8f2617538ce3021cb0a11d1b93856a06a2f2e20
 
-PODFILE CHECKSUM: 96dc3b0b34b6ae8a0d9aaacefc2e05106546982a
+PODFILE CHECKSUM: c2de61016ba23dcbc1ac69719d6153b07a8103f0
 
 COCOAPODS: 1.5.3

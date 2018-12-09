@@ -29,7 +29,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.23018704354763031" green="0.77713233232498169" blue="0.3158949613571167" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="do1-Az-sX0" secondAttribute="bottom" constant="10" id="2c3-lr-Ixh"/>
                             <constraint firstItem="do1-Az-sX0" firstAttribute="leading" secondItem="pAh-Nu-eZT" secondAttribute="leading" constant="10" id="EJ3-o0-at1"/>
@@ -40,30 +40,32 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxv-Zx-MLL">
-                        <rect key="frame" x="50" y="0.0" width="220" height="43.5"/>
+                        <rect key="frame" x="50" y="0.0" width="130" height="43.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z6o-eN-Zx0" userLabel="FavoriteView">
-                        <rect key="frame" x="270" y="-3.5" width="50" height="50.5"/>
+                        <rect key="frame" x="180" y="-3.5" width="120" height="50.5"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwV-JI-lAU">
-                                <rect key="frame" x="10" y="10.5" width="30" height="30"/>
-                                <state key="normal" image="unfavorite-icon"/>
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="50.5"/>
+                                <color key="tintColor" red="0.23018704349999999" green="0.77713233230000001" blue="0.31589496140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Quiz" image="quiz-icon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="toggleActive:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KRV-9C-GKu"/>
+                                    <action selector="quizAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cRP-QE-UME"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LwV-JI-lAU" firstAttribute="leading" secondItem="Z6o-eN-Zx0" secondAttribute="leading" constant="10" id="H0g-5x-fcU"/>
-                            <constraint firstItem="LwV-JI-lAU" firstAttribute="top" secondItem="Z6o-eN-Zx0" secondAttribute="top" constant="10" id="IqN-6y-mwn"/>
-                            <constraint firstAttribute="trailing" secondItem="LwV-JI-lAU" secondAttribute="trailing" constant="10" id="TPW-do-CzX"/>
-                            <constraint firstAttribute="bottom" secondItem="LwV-JI-lAU" secondAttribute="bottom" constant="10" id="WTm-P7-OBL"/>
+                            <constraint firstItem="LwV-JI-lAU" firstAttribute="leading" secondItem="Z6o-eN-Zx0" secondAttribute="leading" id="H0g-5x-fcU"/>
+                            <constraint firstItem="LwV-JI-lAU" firstAttribute="top" secondItem="Z6o-eN-Zx0" secondAttribute="top" id="IqN-6y-mwn"/>
+                            <constraint firstAttribute="trailing" secondItem="LwV-JI-lAU" secondAttribute="trailing" id="TPW-do-CzX"/>
+                            <constraint firstAttribute="bottom" secondItem="LwV-JI-lAU" secondAttribute="bottom" id="WTm-P7-OBL"/>
                             <constraint firstAttribute="height" constant="50" id="hdk-PV-pjX"/>
-                            <constraint firstAttribute="width" constant="50" id="lUm-bX-X7X"/>
+                            <constraint firstAttribute="width" constant="120" id="lUm-bX-X7X"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -76,13 +78,14 @@
                     <constraint firstItem="Z6o-eN-Zx0" firstAttribute="leading" secondItem="yxv-Zx-MLL" secondAttribute="trailing" id="iEI-uO-4iZ"/>
                     <constraint firstItem="pAh-Nu-eZT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jAV-6b-LQV"/>
                     <constraint firstItem="yxv-Zx-MLL" firstAttribute="leading" secondItem="pAh-Nu-eZT" secondAttribute="trailing" id="pyf-RM-EdE"/>
-                    <constraint firstAttribute="trailing" secondItem="Z6o-eN-Zx0" secondAttribute="trailing" id="xXo-W4-DaN"/>
+                    <constraint firstAttribute="trailing" secondItem="Z6o-eN-Zx0" secondAttribute="trailing" constant="20" id="xXo-W4-DaN"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="CellSuperView" destination="H2p-sc-9uM" id="F2X-m6-LE8"/>
                 <outlet property="activeButton" destination="do1-Az-sX0" id="LDj-Kz-py5"/>
+                <outlet property="favoriteButton" destination="LwV-JI-lAU" id="EPh-VN-4Sh"/>
                 <outlet property="title" destination="yxv-Zx-MLL" id="BJK-uH-fmj"/>
             </connections>
             <point key="canvasLocation" x="137.59999999999999" y="153.82308845577214"/>
@@ -90,6 +93,6 @@
     </objects>
     <resources>
         <image name="inactiveNotification-icon" width="75" height="75"/>
-        <image name="unfavorite-icon" width="75" height="75"/>
+        <image name="quiz-icon" width="75" height="75"/>
     </resources>
 </document>

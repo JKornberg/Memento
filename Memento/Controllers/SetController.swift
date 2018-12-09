@@ -11,6 +11,7 @@ import SwipeCellKit
 import CoreData
 import RealmSwift
 import UserNotifications
+import ChameleonFramework
 class SetController: UIViewController, UITableViewDelegate, UITableViewDataSource, CellDelegate {
 
     
@@ -25,7 +26,20 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
     var selectedSettingCell : IndexPath?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var cardSetTableView: UITableView!
-    
+    let analArray = [UIColor(hexString: "EF5777"),UIColor(hexString: "FF2165"),UIColor(hexString: "FF1451"),UIColor(hexString: "E81E57"),UIColor(hexString: "D42151")]
+    //let analArray = [UIColor(hexString: "EF5777"),UIColor(hexString: "E81E4D"),UIColor(hexString: "FF1451"),UIColor(hexString: "E81E57"),UIColor(hexString: "FF2165")]
+//    let analArray = [UIColor(hexString: "EF5777"),UIColor(hexString: "FC4F5F"),UIColor(hexString: "F53B57"),UIColor(hexString: "FC4F88"),UIColor(hexString: "D8436C")]
+    var analogousLoop : [UIColor?] {
+        var array : [UIColor?] = analArray
+        for i in analArray.reversed()[1...analArray.count-2]{
+            array.append(i)
+        }
+        return array
+    }
+//    let analArray = NSArray(ofColorsWith: ColorScheme.analogous, using: UIColor.watermelon, withScheme: true) as! [UIColor]
+    let triadArray = NSArray(ofColorsWith: ColorScheme.triadic, using: UIColor.watermelon, withFlatScheme: true) as! [UIColor]
+    var colorIndex = 0
+    var positive = true
     @IBAction func sortSets(_ sender: Any) {
         UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
             print(requests.count)
@@ -36,34 +50,45 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //loadData()
+        view.backgroundColor = UIColor.flatMint
+        navigationController?.navigationBar.barTintColor = .flatMintDark
+        navigationController?.navigationBar.tintColor = .white
+        cardSetTableView.backgroundColor = .flatMint
         setArray = appDelegate.setArray
         searchBar.delegate = self
         cardSetTableView.delegate = self
         cardSetTableView.dataSource = self
         cardSetTableView.register(UINib(nibName: "SetCell", bundle: nil), forCellReuseIdentifier: "customSetCell")
         cardSetTableView.rowHeight = 80
+        cardSetTableView.separatorInset = .zero
+        cardSetTableView.separatorStyle = .none
+        cardSetTableView.separatorColor = triadArray[1]
+        searchBar.barTintColor = UIColor.flatMint
+        cardSetTableView.tableFooterView = UIView()
     }
     
     //TOPIC: - Delegate Functions
     func toggleSet(setID: Int) {
-        do{
-            try realm.write {
-                setArray![setID].isActive = !setArray![setID].isActive
+        checkNotifications(){
+            do{
+                try self.realm.write {
+                    self.setArray![setID].isActive = !self.setArray![setID].isActive
+                }
+            } catch{
+                print("error saving toggle")
             }
-        } catch{
-            print("error saving toggle")
-        }
-        cardSetTableView.reloadData()
-        let set = setArray![setID]
-        if set.isActive{
-            appDelegate.scheduleNotifications(set: set)
-        } else {
-            appDelegate.cancelNotifications(set: set)
-        }
+            self.colorIndex = 0
+            self.cardSetTableView.reloadData()
+            let set = self.setArray![setID]
+            if set.isActive{
+                self.appDelegate.scheduleNotifications(set: set)
+            } else {
+                self.appDelegate.cancelNotifications(set: set)
+            }
         /*
         setArray[setID].isActive = val
         print("set \(setID) is \(val)")
-        saveSets() */
+             saveSets() */ }
     }
     
     func presentCard(set: cardSet){
@@ -83,23 +108,32 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         newCell.title.text = setArray?[indexPath.row].title ?? "No sets added yet"
         newCell.cellDelegate = self
         newCell.checked = setArray?[indexPath.row].isActive ?? false
+//        newCell.backgroundColor = analArray[colorIndex]
+//        if positive{
+//            colorIndex += 1
+//            if colorIndex > 4{
+//                colorIndex = colorIndex - 2
+//                positive = false
+//            }
+//        } else{
+//            colorIndex -= 1
+//            if colorIndex < 0{
+//                colorIndex += 2
+//                positive = true
+//            }
+//        }
         return newCell
     }
     
+    //    5 : 3 6: 2 7 : 1
+    //    13 : 3
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = analogousLoop[indexPath.row%8]
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-        let quizAction = UIAlertAction(title: "Quiz Me", style: .default) { (action) in
-            self.performSegue(withIdentifier: "PresentCard", sender: self)
-            self.cardSetTableView.deselectRow(at: indexPath, animated: true)
-
-        }
-        let editAction = UIAlertAction(title: "Edit Cards", style: .default) { (action) in
-            self.performSegue(withIdentifier: "OpenCardsSet", sender: self)
-            self.cardSetTableView.deselectRow(at: indexPath, animated: true)
-        }
-        alert.addAction(quizAction)
-        alert.addAction(editAction)
-        present(alert, animated: true)
+        performSegue(withIdentifier: "OpenCardsSet", sender: self)
+        cardSetTableView.deselectRow(at: indexPath, animated: false)
     }
     
     
@@ -112,12 +146,20 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
         } catch {
             print("Error saving context")
         }
+        colorIndex = 0
         cardSetTableView.reloadData()
     }
     
     func loadData(){
         setArray = realm.objects(cardSet.self).sorted(byKeyPath: "dateCreated")
+        colorIndex = 0
         cardSetTableView.reloadData()
+    }
+    
+    func quiz(setID: Int){
+        cardSetTableView.selectRow(at: IndexPath(row: setID, section: 0), animated: false, scrollPosition: .none)
+        performSegue(withIdentifier: "PresentQuiz", sender: self)
+        cardSetTableView.deselectRow(at: IndexPath(row: setID, section: 0), animated: false)
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
@@ -161,18 +203,38 @@ class SetController: UIViewController, UITableViewDelegate, UITableViewDataSourc
             if let indexPath = cardSetTableView.indexPathForSelectedRow {
                 dest.card = setArray?[indexPath.row].cards[0]
             }
+        } else if segue.identifier == "PresentQuiz"{
+            let dest = segue.destination as! PresentQuizController
+            if let indexPath = cardSetTableView.indexPathForSelectedRow {
+                dest.set = setArray?[indexPath.row]
+            }
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func checkNotifications(handler: @escaping ()->Void){
+        print("CHECKING NOTIFICATIONS")
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings(){ (settings) in
+            print(settings.authorizationStatus)
+            if settings.authorizationStatus != .authorized || settings.alertSetting != .enabled || settings.lockScreenSetting != .enabled{
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Notifications not enabled, unable to schedule set Notifications", message: nil, preferredStyle: .alert)
+                    let settingsAction = UIAlertAction(title: "Go to settings", style: .default){(UIAlertAction) -> Void in
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                    }
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+                    alert.addAction(settingsAction)
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true)
+                    
+                    }
+            }else{
+                DispatchQueue.main.async {
+                    handler()
+                }
+            }
+        }
     }
-    */
 
 }
 
@@ -194,6 +256,7 @@ extension SetController : SwipeTableViewCellDelegate{
                     print("Error deleting set")
                 }
             }
+            self.colorIndex = 0
             self.cardSetTableView.reloadData()
         }
         deleteAction.image = UIImage(named: "delete-icon")
@@ -257,7 +320,9 @@ extension SetController : UITextFieldDelegate{
 
 extension SetController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        loadData()
         setArray = setArray?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated")
+        colorIndex = 0
         cardSetTableView.reloadData()
     }
     

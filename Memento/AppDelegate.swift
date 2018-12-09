@@ -56,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Setup card content
         content.title = "Memento Quiz"
         let card = getWeightedRandom(set: set)
+        print(card.side1)
         content.body = card.side1
         content.sound = UNNotificationSound.default
         content.categoryIdentifier = "questionCategory"
@@ -72,11 +73,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var totalWeight = 0
         var selectedCard = Card()
         for card in set.cards{
-            totalWeight += card.points
+            totalWeight += card.points + 1
         }
         var randInt = Int.random(in: 0..<totalWeight)
         for card in set.cards{
-            randInt -= card.points
+            randInt -= (card.points + 1)
             if randInt <= 0{
                 selectedCard = card
                 break
@@ -107,16 +108,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if right{
             switch card.streak{
             case let x where x >= 5:
-                newPoints = card.points + 3
+                newPoints = card.points - 3
             case 3...4:
-                newPoints = card.points + 2
+                newPoints = card.points - 2
             default:
-                newPoints = card.points + 1
+                newPoints = card.points - 1
             }
             newStreak = card.streak + 1
         } else{
-            newPoints = card.points - 1
+            newPoints = card.points + 1
             newStreak = 0
+        }
+        if newPoints > 10{
+            newPoints = 10
+        } else if newPoints < 0{
+            newPoints = 0
         }
         do{
             try realm.write {
@@ -179,7 +185,29 @@ extension AppDelegate : UNUserNotificationCenterDelegate{
             }
         }
         guard let card = selectedCard else {return}
-        response.actionIdentifier == "knownAction" ? changePoints(card, right: true) : changePoints(card, right: false)
+        
+        if response.actionIdentifier == "knownAction"{
+            changePoints(card, right: true)
+        } else if response.actionIdentifier == "viewAction"{
+            redirectToVC(card, isFront: false)
+        } else{
+            redirectToVC(card, isFront: true)
+            print(response.actionIdentifier)
+        }
         completionHandler()
+        
+
+    }
+    func redirectToVC(_ card: Card, isFront: Bool) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let destinationViewController = storyboard.instantiateViewController(withIdentifier: "presentCard") as! PresentCardController
+        destinationViewController.card = card
+        destinationViewController.isFront = isFront
+        
+        let navigationController = self.window?.rootViewController as! UINavigationController
+        
+        navigationController.pushViewController(destinationViewController, animated: false)
+
     }
 }

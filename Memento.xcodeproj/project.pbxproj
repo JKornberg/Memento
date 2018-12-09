@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3EAECEBC682B4D718FACF849 /* Pods_Memento.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8307A466ED0EE1FCCE500F /* Pods_Memento.framework */; };
 		460C484921A9AE220016699D /* EnablePushController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460C484821A9AE220016699D /* EnablePushController.swift */; };
+		461FAB3621B62E5100C234C3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FAB3521B62E5100C234C3 /* Extensions.swift */; };
 		4642B92421821CA00039732D /* CardsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4642B92321821CA00039732D /* CardsController.swift */; };
 		46552982218BC14000DF1973 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46552980218BC14000DF1973 /* CardCell.swift */; };
 		46552983218BC14000DF1973 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46552981218BC14000DF1973 /* CardCell.xib */; };
@@ -18,6 +19,8 @@
 		4688969921A4C89600B08509 /* cardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688969821A4C89600B08509 /* cardSet.swift */; };
 		468AA35C21B4834A00495480 /* flipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 468AA35B21B4834A00495480 /* flipView.xib */; };
 		469E7A32217B7F19009E9D7D /* SetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469E7A31217B7F19009E9D7D /* SetController.swift */; };
+		46B8F50A21B832450038BDD9 /* PresentQuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B8F50921B832450038BDD9 /* PresentQuizController.swift */; };
+		46B8F50C21B83A6B0038BDD9 /* CardDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B8F50B21B83A6B0038BDD9 /* CardDisplayController.swift */; };
 		46B92529217D049B0046E228 /* SetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B92527217D049B0046E228 /* SetCell.swift */; };
 		46B9252A217D049B0046E228 /* SetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46B92528217D049B0046E228 /* SetCell.xib */; };
 		46D1B17021AEF20B007F1A17 /* SetSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D1B16F21AEF20B007F1A17 /* SetSettingsController.swift */; };
@@ -31,6 +34,7 @@
 /* Begin PBXFileReference section */
 		1F8307A466ED0EE1FCCE500F /* Pods_Memento.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memento.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		460C484821A9AE220016699D /* EnablePushController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnablePushController.swift; sourceTree = "<group>"; };
+		461FAB3521B62E5100C234C3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4642B92321821CA00039732D /* CardsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsController.swift; sourceTree = "<group>"; };
 		46552980218BC14000DF1973 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		46552981218BC14000DF1973 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
@@ -40,6 +44,8 @@
 		4688969821A4C89600B08509 /* cardSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cardSet.swift; sourceTree = "<group>"; };
 		468AA35B21B4834A00495480 /* flipView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = flipView.xib; sourceTree = "<group>"; };
 		469E7A31217B7F19009E9D7D /* SetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetController.swift; sourceTree = "<group>"; };
+		46B8F50921B832450038BDD9 /* PresentQuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentQuizController.swift; sourceTree = "<group>"; };
+		46B8F50B21B83A6B0038BDD9 /* CardDisplayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDisplayController.swift; sourceTree = "<group>"; };
 		46B92527217D049B0046E228 /* SetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCell.swift; sourceTree = "<group>"; };
 		46B92528217D049B0046E228 /* SetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetCell.xib; sourceTree = "<group>"; };
 		46D1B16F21AEF20B007F1A17 /* SetSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSettingsController.swift; sourceTree = "<group>"; };
@@ -69,6 +75,8 @@
 		46415C4C21B315D500EAB248 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				468AA35B21B4834A00495480 /* flipView.xib */,
+				461FAB3521B62E5100C234C3 /* Extensions.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -99,8 +107,9 @@
 				4642B92321821CA00039732D /* CardsController.swift */,
 				460C484821A9AE220016699D /* EnablePushController.swift */,
 				46D1B16F21AEF20B007F1A17 /* SetSettingsController.swift */,
+				46B8F50B21B83A6B0038BDD9 /* CardDisplayController.swift */,
 				4657B45B21B19DFD007792BC /* PresentCardController.swift */,
-				468AA35B21B4834A00495480 /* flipView.xib */,
+				46B8F50921B832450038BDD9 /* PresentQuizController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -271,6 +280,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Memento/Pods-Memento-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/CheckMarkView/CheckMarkView.framework",
 				"${BUILT_PRODUCTS_DIR}/RandomUtils/RandomUtils.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -281,6 +291,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CheckMarkView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RandomUtils.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
@@ -301,11 +312,14 @@
 			files = (
 				460C484921A9AE220016699D /* EnablePushController.swift in Sources */,
 				4642B92421821CA00039732D /* CardsController.swift in Sources */,
+				46B8F50A21B832450038BDD9 /* PresentQuizController.swift in Sources */,
 				46B92529217D049B0046E228 /* SetCell.swift in Sources */,
 				46D1B17021AEF20B007F1A17 /* SetSettingsController.swift in Sources */,
 				46DC3D05217A5698000D22C4 /* HomeController.swift in Sources */,
+				46B8F50C21B83A6B0038BDD9 /* CardDisplayController.swift in Sources */,
 				46DC3D03217A5698000D22C4 /* AppDelegate.swift in Sources */,
 				469E7A32217B7F19009E9D7D /* SetController.swift in Sources */,
+				461FAB3621B62E5100C234C3 /* Extensions.swift in Sources */,
 				46552982218BC14000DF1973 /* CardCell.swift in Sources */,
 				4688969721A4C88700B08509 /* Card.swift in Sources */,
 				4688969921A4C89600B08509 /* cardSet.swift in Sources */,

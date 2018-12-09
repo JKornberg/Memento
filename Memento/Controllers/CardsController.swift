@@ -24,12 +24,13 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         //NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(_:)), name: Notification.Name.myNotificationKey, object: nil)
-
+        view.backgroundColor = UIColor.lightmelon
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveTerminate(_:)), name: Notification.Name.terminationNotificationKey, object: nil)
         loadData()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "CardCell", bundle: nil), forCellReuseIdentifier: "customCardCell")
+        tableView.separatorStyle = .none
         initToolbar()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.donePressed(_:)))
         self.navigationItem.rightBarButtonItem = doneButton
@@ -42,20 +43,19 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func initToolbar(){
-        let bar = UIToolbar()
-        self.view.addSubview(bar)
-
-        bar.topAnchor.constraint(equalTo: tableView.bottomAnchor).isActive=true
-        self.view.leadingAnchor.constraint(equalTo: bar.leadingAnchor).isActive=true
-        self.view.trailingAnchor.constraint(equalTo: bar.trailingAnchor).isActive=true
-        self.view.bottomAnchor.constraint(equalTo: bar.bottomAnchor).isActive=true
-        
-        bar.backgroundColor = UIColor.black
-        bar.translatesAutoresizingMaskIntoConstraints = false
-        let addCardButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addCard(_:)))
+        let bar = UIView()
+        bar.backgroundColor = UIColor.flatMintDark
+        view.addSubview(bar)
+        bar.anchor(top: tableView.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
+        let addCardButton = UIButton(type: .system)
+        addCardButton.setImage(UIImage(named: "add-icon")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        addCardButton.addTarget(self, action: #selector(self.addCard(_:)), for: .touchUpInside)
         addCardButton.tag = 1
-        addCardButton.style = .plain
-        bar.setItems([addCardButton], animated: true)
+        addCardButton.tintColor = UIColor.watermelon
+        addCardButton.setImage(UIImage(named: "addHighlight-icon")?.withRenderingMode(.alwaysTemplate), for: .highlighted)
+        bar.addSubview(addCardButton)
+        addCardButton.anchor(top: tableView.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
+        addCardButton.imageView?.contentMode = .scaleAspectFit
     }
     
     func configureTableView(){
@@ -65,7 +65,7 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         saveCards()
     }
     
-    @IBAction func addCard(_ barItem: UIBarButtonItem){
+    @IBAction func addCard(_ barItem: UIButton){
         saveCards()
         do{
             try realm.write{
@@ -168,6 +168,7 @@ class CardsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         createShadow(cell: cell)
         cell.selectionStyle = .none
         cell.indexPath = indexPath
+        cell.backgroundColor = UIColor.lightmelon
         //cell.side1.delegate=self
         //cell.side2.delegate=self
         // Configure the cell...
